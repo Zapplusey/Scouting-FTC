@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="./Assets/Styling/results.css">
+    <script src="./Assets/Scripts/results.js" type="module" defer></script>
+    <script src="./Assets/Scripts/numberDisplay.js"></script>
+    <script src="./Assets/Scripts/internetDetector.js"></script>
+    <!-- <script src="./Assets/Scripts/toggleButton.js" defer></script> -->
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="top">
+        <div class="buttons-wrapper">
+            <button class="link" onclick="window.open('./index.html', '_self')">return to form</button>
+            <button class="refresh" data-result-view-mode="forms">See all results</button>
+            <button class="refresh" data-result-view-mode="averages">See averages (summary)</button>
+            <!-- <button class="button toggle menu-toggle" style="z-index: 10">≡</button>
+
+            <div class="menu">
+                <h2>calculate average</h2>
+                <input type="text" placeholder="copy & enter name">
+            </div> -->
+        </div>
+    </div>
+    <div class="middle">
+        <h1 style="display: none;" id="offline-wrapper" data-refreshOffline="false"></h1>
+        <h1 class="heading hebrew">Results תוצאות:</h1>
+        <table class="results" id="result_viewer">
+
+        </table>
+    </div>
+    <div class="none" style="opacity: 0; width: 0px; height: 0px;">
+        <button id="sub" style="pointer-events: none; position:fixed; "></button>
+    </div>
+
+    <div>
+        <canvas id="chartView"></canvas>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

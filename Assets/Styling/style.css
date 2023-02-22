@@ -1,0 +1,192 @@
+@font-face {
+  font-family: "Varela Round";
+  src: url("./fonts/VarelaRound-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(205deg, 70%, 24%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+body * {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.hebrew,
+.hebrew * {
+  font-family: "Varela Round";
+}
+
+::-webkit-scrollbar {
+  width: initial;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(-90deg, hsl(205deg, 100%, 20%) 0%, hsl(205deg, 100%, 30%) 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(205deg, 80%, 60%);
+}
+
+::-webkit-scrollbar-corner {
+  background: none;
+  box-shadow: 0em 0em 0.5vh hsl(205deg, 50%, 50%) inset;
+}
+
+p,
+h1,
+h2,
+h3 {
+  color: hsl(210deg, 100%, 10%);
+  font-weight: 900;
+}
+
+form {
+  background-color: hsl(200deg, 85%, 57%);
+  padding: 2vh;
+  border-radius: 3vh;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 3vh, 1vw;
+  padding: 3vh;
+  min-width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  row-gap: 1em;
+}
+form * {
+  text-align: right;
+}
+
+datalist option {
+  font-size: 200%;
+  color: black;
+}
+
+div.buttons-wrapper button,
+button.link,
+form button {
+  font-size: 1.4rem;
+  background-color: hsla(205deg, 100%, 30%, 0.5);
+  color: hsl(205deg, 90%, 70%);
+  border: 0.2em hsl(205deg, 90%, 70%) solid;
+  border-radius: 0.4em;
+  cursor: pointer;
+  margin: 0.5em 0.2em;
+  padding: 0.2em 0.4em;
+  transition: 250ms ease-in-out;
+}
+div.buttons-wrapper button:hover,
+button.link:hover,
+form button:hover {
+  box-shadow: 0em 0em 0.2em 0em hsl(205deg, 90%, 70%) inset, 0em 0em 0.35em 0em hsl(205deg, 90%, 70%) inset;
+}
+
+form button {
+  font-size: 1.1em;
+  color: hsl(205deg, 100%, 80%);
+}
+
+input,
+select,
+option {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+  background-color: hsl(205deg, 80%, 70%);
+  border-radius: 3vh;
+  color: black;
+  min-height: 3vh;
+  min-width: 3vh;
+}
+
+div.center {
+  width: -moz-fit-content;
+  width: fit-content;
+  min-height: 100vh;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+yn-select {
+  border-radius: 0.4em;
+  background-color: hsl(335deg, 70%, 30%);
+  transition: all 300ms ease-in-out;
+  color: hsl(275deg, 100%, 90%);
+  position: relative;
+  align-self: center;
+  box-shadow: 0em 0em 0.3em 0em hsl(205deg, 100%, 10%) inset, 0em 0em 0.6em 0em hsl(205deg, 100%, 20%) inset;
+  display: inline;
+}
+
+h2,
+h3 {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 110%;
+  display: inline;
+}
+
+yn-select[value=true] {
+  background-color: hsl(135deg, 70%, 60%);
+  color: hsl(145deg, 100%, 20%);
+}
+
+yn-select:hover {
+  box-shadow: 0em 0em 0.4em 0em hsl(185deg, 100%, 80%) inset;
+}
+
+.info.input {
+  text-align: center;
+}
+
+div.pole-display-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  background-color: hsl(205deg, 70%, 26%);
+  padding: 0.3vh 2vh;
+  border-radius: 3vh;
+  gap: 1vh;
+  box-shadow: 0 0 2vh 0 hsl(205deg, 70%, 26%), 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
+}
+div.pole-display-wrapper * {
+  color: white;
+}
+
+poles-display.back {
+  background-color: hsl(205deg, 70%, 26%);
+  padding: 2vh 2vh;
+  border-radius: 3vh;
+  box-shadow: 0 0 2vh 0 hsl(205deg, 70%, 26%), 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
+  color: white;
+}
+
+switch-display {
+  color: #000000;
+}
+
+h1.title,
+h2.title {
+  text-decoration: underline;
+  font-size: 160%;
+  margin: 0.7em 0.1em;
+}

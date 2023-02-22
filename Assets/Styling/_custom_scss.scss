@@ -1,0 +1,109 @@
+@use "sass:map";
+@use "sass:color";
+
+$main-hue: 205deg; // previously 205deg
+
+$lightness-values: (
+  1: 10,
+  2: 20,
+  3: 30,
+  4: 40,
+  5: 50,
+  6: 60,
+  7: 70,
+  8: 80,
+  9: 90,
+  10: 100,
+  light: 97,
+  dark: 3,
+  0: 0,
+);
+
+$saturation-values: (
+  1: 10,
+  2: 20,
+  3: 30,
+  4: 40,
+  5: 50,
+  6: 60,
+  7: 70,
+  8: 80,
+  9: 90,
+  10: 100,
+  light: 100,
+  dark: 0,
+  middle-ground: 55,
+  mixed: 65,
+);
+
+@function getCC($saturation: 5,
+  $lightness: 5,
+  $opacity: 1,
+  $adjust-hue: 0deg,
+  $saturation-add: 0,
+  $lightness-add: 0) {
+  @return hsla($main-hue + $adjust-hue,
+    (map.get($saturation-values, $saturation) + $saturation-add) * 1%,
+    (map.get($lightness-values, $lightness) + $lightness-add) * 1%,
+    $opacity );
+}
+
+@mixin flexing($direction: column,
+  $spacing: space-around,
+  $alignment: center,
+  $item-alignment: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $spacing;
+  align-content: $alignment;
+  align-items: $item-alignment;
+}
+
+@font-face {
+  font-family: "Varela Round";
+  src: url("./fonts/VarelaRound-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  background-color: getCC(7, 2, 1, 0deg, 0, 4);
+
+  * {
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include flexing();
+}
+
+.hebrew,
+.hebrew * {
+  font-family: "Varela Round";
+}
+
+::-webkit-scrollbar {
+  width: initial;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(-90deg, getCC(10, 2) 0%, getCC(10, 3) 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: getCC(8, 6);
+}
+
+::-webkit-scrollbar-corner {
+  background: none;
+  box-shadow: 0em 0em 0.5vh getCC(5, 5) inset;
+}

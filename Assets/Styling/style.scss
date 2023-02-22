@@ -1,0 +1,149 @@
+@import "custom_scss";
+
+p,
+h1,
+h2,
+h3 {
+  color: getCC(10, 1, 1, 5);
+  font-weight: 900;
+}
+
+form {
+  background-color: getCC(8, 5, 1, -5deg, 5, 7);
+  padding: 2vh;
+  border-radius: 3vh;
+  height: fit-content;
+  margin: 3vh, 1vw;
+  padding: 3vh;
+  min-width: 40vw;
+  @include flexing(column, $item-alignment: center);
+  row-gap: 1em;
+
+  * {
+    text-align: right;
+  }
+}
+
+datalist option {
+  font-size: 200%;
+  color: black;
+}
+
+div.buttons-wrapper button,
+button.link,
+form button {
+  font-size: 1.4rem;
+
+  background-color: getCC(light, 3, 0.5);
+  $main-color: getCC(9, 7);
+  color: $main-color;
+  border: 0.2em $main-color solid;
+  border-radius: 0.4em;
+
+  cursor: pointer;
+  margin: 0.5em 0.2em;
+  padding: 0.2em 0.4em;
+  transition: 250ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0em 0em 0.2em 0em $main-color inset,
+      0em 0em 0.35em 0em $main-color inset;
+  }
+}
+
+form button {
+  font-size: 1.1em;
+  color: getCC(10, 8);
+}
+
+input,
+select,
+option {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+  background-color: getCC(8, 7);
+  border-radius: 3vh;
+  color: black;
+  min-height: 3vh;
+  min-width: 3vh;
+}
+
+div.center {
+  width: fit-content;
+  min-height: 100vh;
+  height: fit-content;
+}
+
+yn-select {
+  // background-color: getCC(5, 3);
+  border-radius: 0.4em;
+  background-color: getCC(7, 3, 1, 130deg);
+  transition: all 300ms ease-in-out;
+  color: getCC(10, 9, 1, 70deg);
+  position: relative;
+  align-self: center;
+  box-shadow: 0em 0em 0.3em 0em getCC(10, 1) inset,
+    0em 0em 0.6em 0em getCC(10, 2) inset;
+  display: inline;
+}
+
+h2,
+h3 {
+  width: fit-content;
+  font-size: 110%;
+  display: inline;
+}
+
+yn-select[value="true"] {
+  background-color: getCC(7, 6, 1, -70deg);
+  color: getCC(10, 2, 1, -60deg);
+}
+
+yn-select:hover {
+  box-shadow: 0em 0em 0.4em 0em getCC(10, 8, 1, -20deg) inset;
+}
+
+.info.input {
+  text-align: center;
+}
+
+$back-color: getCC(7, 3, 1, 0deg, 0, -4);
+
+div.pole-display-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  background-color: $back-color;
+  padding: 0.3vh 2vh;
+  border-radius: 3vh;
+  gap: 1vh;
+  box-shadow: 0 0 2vh 0 $back-color, 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
+
+  * {
+    color: white;
+  }
+}
+
+poles-display.back {
+  background-color: $back-color;
+  padding: 2vh 2vh;
+  border-radius: 3vh;
+  box-shadow: 0 0 2vh 0 $back-color, 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
+  color: white;
+}
+
+switch-display {
+  color: #000000;
+}
+
+// h2 {
+//   font-size: 90%;
+// }
+
+h1.title,
+h2.title {
+  text-decoration: underline;
+  font-size: 160%;
+  margin: 0.7em 0.1em;
+}
