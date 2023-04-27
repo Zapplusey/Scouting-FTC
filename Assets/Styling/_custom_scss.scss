@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "sass:color";
+@import "./fonts_css";
 
 $main-hue: 205deg; // previously 205deg
 
@@ -48,6 +49,35 @@ $saturation-values: (
     $opacity );
 }
 
+
+@mixin tooltip($offsetX: 0em, $offsetY: 1.1em) {
+  &::after {
+    content: var(--tooltip-text);
+    font-family: inherit;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+    text-align: center;
+    position: absolute;
+    display: block;
+    background-color: getCC(8, 10, 0.3);
+    border-radius: 0.3em;
+    padding: 0 0.2em;
+    translate: $offsetY $offsetX;
+    opacity: 0;
+    transition: 300ms ease opacity;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &.active::after {
+    opacity: 0;
+  }
+}
+
 @mixin flexing($direction: column,
   $spacing: space-around,
   $alignment: center,
@@ -59,11 +89,10 @@ $saturation-values: (
   align-items: $item-alignment;
 }
 
-@font-face {
-  font-family: "Varela Round";
-  src: url("./fonts/VarelaRound-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
+@media screen and (min-aspect-ratio:10/9) {
+  :root {
+    font-size: 20px;
+  }
 }
 
 body {
@@ -84,6 +113,10 @@ body {
   }
 
   @include flexing();
+}
+
+* {
+  font-family: "QuickSand";
 }
 
 .hebrew,

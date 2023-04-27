@@ -4,6 +4,35 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "QuickSand";
+  src: url("./fonts/Quicksand-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-light";
+  src: url("./fonts/Quicksand-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-regular";
+  src: url("./fonts/Quicksand-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-semibold";
+  src: url("./fonts/Quicksand-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+@media screen and (min-aspect-ratio: 10/9) {
+  :root {
+    font-size: 20px;
+  }
+}
 body {
   width: 100vw;
   min-height: 100vh;
@@ -24,6 +53,10 @@ body * {
   position: relative;
   margin: 0;
   padding: 0;
+}
+
+* {
+  font-family: "QuickSand";
 }
 
 .hebrew,
