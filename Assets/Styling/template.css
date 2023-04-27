@@ -1,0 +1,243 @@
+@font-face {
+  font-family: "Varela Round";
+  src: url("./fonts/VarelaRound-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand";
+  src: url("./fonts/Quicksand-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-light";
+  src: url("./fonts/Quicksand-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-regular";
+  src: url("./fonts/Quicksand-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-semibold";
+  src: url("./fonts/Quicksand-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+@media screen and (min-aspect-ratio: 10/9) {
+  :root {
+    font-size: 20px;
+  }
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(205, 60%, 14%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+body * {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "QuickSand";
+}
+
+.hebrew,
+.hebrew * {
+  font-family: "Varela Round";
+}
+
+::-webkit-scrollbar {
+  width: initial;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(-90deg, hsl(205, 100%, 20%) 0%, hsl(205, 100%, 30%) 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(205, 80%, 60%);
+}
+
+::-webkit-scrollbar-corner {
+  background: none;
+  box-shadow: 0em 0em 0.5vh hsl(205, 50%, 50%) inset;
+}
+
+.template-content {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+.template-top {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5em;
+  padding: 2em 0;
+  background-color: hsl(205, 40%, 30%);
+}
+.template-top div.interface {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.template-top div.interface:has(.page-links.active) {
+  transition: gap 300ms;
+}
+.template-top div.interface:has(.page-links.active) .profile {
+  transition-delay: 0ms;
+  transform: translateX(-5em);
+}
+.template-top div.interface .menu-wrapper {
+  display: block;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  gap: 0.375em;
+  width: 1.65em;
+  height: -moz-fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links > .particle {
+  border-radius: 3em;
+  width: 1.5em;
+  height: 0.1875em;
+  background-color: hsl(205, 80%, 70%);
+  transition: all 225ms 50ms, translate 300ms 530ms, transform 300ms 300ms, width 200ms, box-shadow 260ms 0ms;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links > .particle a {
+  font-size: 1.2195121951em;
+  font-family: "Aquire Light";
+  font-stretch: condensed;
+  letter-spacing: 0;
+  transition: opacity 250ms ease, transform 300ms 125ms;
+  transform-origin: bottom left;
+  opacity: 0;
+  color: white;
+  outline: none;
+  pointer-events: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links > .wrapper-exit {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  inset: 10% 15% 0%;
+  transform: translateY(50%);
+  overflow: hidden;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links > .wrapper-exit > .particle {
+  transition: translate 300ms 0ms;
+  position: absolute;
+  background-color: white;
+  width: 0.9375em;
+  height: 0.1171875em;
+  transform-origin: center center;
+  border-radius: 1.5em;
+  translate: 0 -1000%;
+  rotate: calc(var(--i) * 45deg);
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links:hover:not(.active) .particle {
+  box-shadow: 0 0 0.2em 0 hsl(205, 90%, 80%);
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active:not(:has(.particle a:hover)):hover > .particle {
+  transform: translateX(calc(3.75em * var(--i)));
+  box-shadow: 0 0 0.2em 0 hsl(205, 90%, 80%);
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active:not(:has(.particle a:hover)):hover > .wrapper-exit > .particle {
+  box-shadow: 0 0 0.2em 0 hsl(205, 90%, 80%);
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle {
+  transition: box-shadow 225ms 100ms, translate 325ms ease 250ms, transform 300ms, width 200ms, padding 200ms;
+  transform: translateX(calc(4.125em * var(--i)));
+  translate: 0 calc(-0.5625em * var(--i));
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle:has(:hover) {
+  padding: 0em 0.3333333333em;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle a {
+  transition: opacity 300ms ease 100ms, transform 200ms, text-shadow 300ms;
+  transform: translateY(-100%);
+  position: static;
+  opacity: 1;
+  pointer-events: all;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle a:hover {
+  text-shadow: 0 0 0.2em white, 0 0 0.5em white;
+}
+.template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .wrapper-exit > .particle {
+  transition: translate 300ms 100ms, box-shadow 300ms;
+  translate: 0 50%;
+}
+.template-top div.interface .menu-wrapper .menu-effect-wrapper {
+  transition: all 300ms;
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+.template-top div.interface .menu-wrapper .menu-effect-wrapper .particle {
+  position: relative;
+  aspect-ratio: 8/1;
+  background-color: hsl(205, 80%, 70%);
+  width: 1.5em;
+  transform-origin: top center;
+  transform: translateX(calc(50% * var(--direction))) rotateZ(calc(-45deg * var(--direction)));
+  margin: 0;
+  padding: 0;
+}
+.template-top div.interface .menu-wrapper:has(.active) .menu-effect-wrapper {
+  opacity: 1;
+  transform: translateY(1em);
+}

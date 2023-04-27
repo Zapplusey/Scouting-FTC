@@ -37,7 +37,7 @@ export async function writeDoc__(collectionName, o_ = {}, id_ = "NONE") {
     .then(() => {
       console.log("Data set successfully");
     })
-    .catch((error) => {
+    .catch(error => {
       console.log("Operation failed; error: " + error);
     });
 }
@@ -53,7 +53,7 @@ export async function writeDocPath__(collectionNames = [], o_ = {}) {
     .then(() => {
       console.log("Data set successfully");
     })
-    .catch((error) => {
+    .catch(error => {
       console.log("Operation failed; error: " + error);
     });
 }
@@ -62,17 +62,14 @@ export async function getJsonData(path = "") {
   let data = {};
   if (path == "") return data;
   fetch(path)
-    .then((respone) => respone.json())
-    .then((collectedData) => (data = collectedData))
-    .catch((err) => console.error(err));
+    .then(respone => respone.json())
+    .then(collectedData => (data = collectedData))
+    .catch(err => console.error(err));
   return data;
 }
 
 export async function addDoc__(collectionPathArray = [], o_ = {}) {
-  const docRef = await addDoc(
-    collection(db, arrayToPath(collectionPathArray)),
-    o_
-  );
+  const docRef = await addDoc(collection(db, arrayToPath(collectionPathArray)), o_);
   return docRef;
 }
 
@@ -120,9 +117,7 @@ export async function getDocs__(collectionPathArray = []) {
     console.error("There must be an odd number of path directories (getDocs).");
     return null;
   }
-  const docsSnap = await getDocs(
-    collection(db, arrayToPath(collectionPathArray))
-  );
+  const docsSnap = await getDocs(collection(db, arrayToPath(collectionPathArray)));
   console.log("collected data successfully");
   return docsSnap;
 }
@@ -133,29 +128,42 @@ export async function getDocsData__(collectionPathArray = []) {
     console.error("There must be an odd number of path directories (getDocs).");
     return null;
   }
-  const docsSnap = await getDocs(
-    collection(db, arrayToPath(collectionPathArray))
-  );
-  docsSnap.forEach((doc) => {
+  const docsSnap = await getDocs(collection(db, arrayToPath(collectionPathArray)));
+  docsSnap.forEach(doc => {
+    console.log(doc.id);
     dataArr_.push(doc.data());
   });
-  console.log("collected data successfully");
   // console.log(dataArr_);
   return dataArr_;
 }
 
+export async function getDocsDatabase__(collectionPathArray = []) {
+  let dataArr_ = [];
+  let docNameArr_ = [];
+  if (collectionPathArray.length % 2 == 0) {
+    console.error("There must be an odd number of path directories (getDocs).");
+    return null;
+  }
+  const docsSnap = await getDocs(collection(db, arrayToPath(collectionPathArray)));
+  docsSnap.forEach(doc => {
+    docNameArr_.push(doc.id);
+    dataArr_.push(doc.data());
+  });
+  return { data: dataArr_, docs: docNameArr_ };
+}
+
 // hasn't been tested yet
-export async function deleteDocs__(collectionName, id_) {
+export async function deleteDoc__(collectionPathArray = []) {
   try {
-    await deleteDoc(doc(db, collectionName, id_));
+    await deleteDoc(doc(db, arrayToPath(collectionPathArray)));
   } catch (error) {
     console.log(error);
     return;
   }
-  console.log("Successfully deleted: " + id_);
+  console.log("Successfully deleted");
 }
 
-const inputsToValues = (lst) => {
+const inputsToValues = lst => {
   let values = [];
   lst.forEach((e, i) => {
     let currentValue = lst[i].value;
@@ -218,12 +226,12 @@ const gatherInfo = (isManual = true, lst = []) => {
   return infoObj;
 };
 
-const submitValues = (eve) => {
+const submitValues = eve => {
   const inputs = gatherInfo();
   // inputs.sort((a,b) => a.index - b.index);
   addListOfData(inputs);
   alert("Form Submitted! טופס הוגש");
-  window.setTimeout((eve) => {
+  window.setTimeout(eve => {
     location.reload();
   }, 100 * 12);
 };
@@ -231,6 +239,6 @@ const submitValues = (eve) => {
 const submitButton = document.querySelector("button#sub");
 submitButton.addEventListener("click", submitValues);
 
-const addListOfData = (lst) => {
+const addListOfData = lst => {
   addDoc__(["formData"], lst);
 };

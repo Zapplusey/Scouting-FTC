@@ -20,7 +20,7 @@ class SwitchDisplay extends HTMLElement {
 
             </table>
             <style> 
-                .all-wrapper { --main_color: ${this.default_style_color}; }
+                /*.all-wrapper { --main_color: ${this.default_style_color}; }*/
                     
                 
                 .all-wrapper, tr, tbody {
@@ -87,13 +87,16 @@ class SwitchDisplay extends HTMLElement {
             </style>
         `;
     // Setup for listener
-    this.observer = new MutationObserver((mutations) => {
-      mutations.forEach((m) => {
+    this.localShadow
+      .querySelector(".all-wrapper")
+      .style.setProperty("--main_color", this.style.getPropertyValue("--main_color"));
+
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(m => {
         if (m.attributeName == "style") {
-          this.style.setProperty(
-            "--main_color",
-            window.getComputedStyle(this).color
-          );
+          this.localShadow
+            .querySelector(".all-wrapper")
+            .style.setProperty("--main_color", this.style.getPropertyValue("--main_color"));
           console.log("changed Color!");
         }
       });
@@ -111,7 +114,7 @@ class SwitchDisplay extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     const insertElementsFromString = (str_, format, wrapper) => {
       let c = 0;
-      str_.split(";").forEach((e) => {
+      str_.split(";").forEach(e => {
         wrapper.innerHTML += format(e);
         c++;
       });
@@ -122,18 +125,12 @@ class SwitchDisplay extends HTMLElement {
       case "titles":
         let titlesElement = this.localShadow.getElementById("titles");
         titlesElement.innerHTML = "";
-        const c = insertElementsFromString(
-          newValue,
-          (x) => `<td>${x}</td>`,
-          titlesElement
-        );
+        const c = insertElementsFromString(newValue, x => `<td>${x}</td>`, titlesElement);
         this.clearButtons();
         for (let i = 0; i < c; i++) {
           this.addOptionButton();
         }
-        const imgElements = this.localShadow.querySelectorAll(
-          ".all-wrapper images"
-        );
+        const imgElements = this.localShadow.querySelectorAll(".all-wrapper images");
         for (let i = 0; i < c - imgElements.length; i++) {
           this.addImage();
         }
@@ -142,11 +139,7 @@ class SwitchDisplay extends HTMLElement {
       case "images":
         let imagesElement = this.localShadow.getElementById("images");
         imagesElement.innerHTML = "";
-        insertElementsFromString(
-          newValue,
-          (x) => `<td><img src="${x}"></td>`,
-          imagesElement
-        );
+        insertElementsFromString(newValue, x => `<td><img src="${x}"></td>`, imagesElement);
         break;
     }
     window.setTimeout(() => {
@@ -155,13 +148,11 @@ class SwitchDisplay extends HTMLElement {
       console.log(window.getComputedStyle(rows.item(0)).height);
       let maxRowHeight = 0;
       rows.forEach((row, i) => {
-        const currentRowHeight = parseInt(
-          getComputedStyle(row).height.replace("px", "")
-        );
+        const currentRowHeight = parseInt(getComputedStyle(row).height.replace("px", ""));
         console.log(currentRowHeight);
         if (currentRowHeight > maxRowHeight) maxRowHeight = currentRowHeight;
       });
-      rows.forEach((row) => {
+      rows.forEach(row => {
         row.style.height = maxRowHeight + "px";
       });
     }, 2);
@@ -176,14 +167,11 @@ class SwitchDisplay extends HTMLElement {
     const buttonsWrapper = this.localShadow.getElementById("buttons");
     const tempButton = document.createElement("td");
     tempButton.classList.add("button");
-    tempButton.setAttribute(
-      "index",
-      buttonsWrapper.querySelectorAll(".button").length
-    );
+    tempButton.setAttribute("index", buttonsWrapper.querySelectorAll(".button").length);
     buttonsWrapper.appendChild(tempButton);
 
-    tempButton.addEventListener("click", (eve) => {
-      buttonsWrapper.querySelectorAll(".button").forEach((e) => {
+    tempButton.addEventListener("click", eve => {
+      buttonsWrapper.querySelectorAll(".button").forEach(e => {
         e.classList.remove("active");
       });
       tempButton.classList.add("active");
@@ -194,9 +182,7 @@ class SwitchDisplay extends HTMLElement {
   }
 
   addImage(src = "") {
-    this.localShadow.getElementById(
-      "images"
-    ).innerHTML += `<td><img src="${src}"></td>`;
+    this.localShadow.getElementById("images").innerHTML += `<td><img src="${src}"></td>`;
   }
 
   getTitleValue(index) {

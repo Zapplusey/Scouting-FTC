@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL</title>
+    <link rel="stylesheet" href="./Assets/Styling/template.css">
+    <script defer>
+        const mainMenuElem = document.getElementById("top-nav-main-menu"); //document.querySelector("#top-nav div.interface .wrapper.links.page-links.button")
+        mainMenuElem.addEventListener("click", (event) => {
+            event.currentTarget.classList.toggle("active");
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div class="template-top" id="top-nav">
+        <div class="logo-section">
+            <img src="" alt="" class="logo-img" />
+            <h2>ScoutingWeb</h2>
+        </div>
+
+        <div class="interface">
+
+            <div class="menu-wrapper">
+                <div class="wrapper links page-links button " id="top-nav-main-menu">
+                    <div class="particle" style="--i: -1;"><a href="./about.html">ABOUT</a></div>
+                    <div class="particle" style="--i: 0;"><a href="./index.html">HOME</a></div>
+                    <div class="particle" style="--i: 1;"><a href="./tools.html">NEWS</a></div>
+                    <div class="wrapper-exit">
+                        <div class="particle symbol" style="--i: -1"></div>
+                        <div class="particle symbol" style="--i: 1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="template-content">
+    </div>
+    <div class="template-footer"></div>
+</body>
+
+</html>

@@ -57,17 +57,29 @@ div.buttons-wrapper .button {
   transition: 250ms ease-in-out;
   @include tooltip(0em, -1.1em);
 
+  &:has(img) {
+    aspect-ratio: 1/1;
+    padding: 0;
+  }
+
   img {
     aspect-ratio: 1/1;
     object-fit: cover;
-    width: 1.4em;
+    width: 1.3em;
     filter: brightness(0) invert(1);
-
+    padding: 0;
   }
 
   &:hover {
     box-shadow: 0em 0em 0.2em 0em $main-color inset,
       0em 0em 0.35em 0em $main-color inset;
+  }
+}
+
+div.button-wrapper .button {
+  &.add {
+    background: none;
+
   }
 }
 
@@ -88,13 +100,30 @@ span.inline {
   transform: translateY(100%);
   transition: pointer-events 0em ease 100ms;
   pointer-events: none;
+  will-change: display;
+  display: flexbox;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+
+  span.effect {
+    align-self: center;
+    display: block;
+    position: relative;
+    height: 0.01em;
+    z-index: 3;
+    transform-origin: center;
+  }
 
   .wrapper {
     @include flexing(column);
+
     gap: 0.2em;
     position: relative;
     transform: translateY(-101%);
-    transition: transform 300ms ease 80ms;
+    transition: transform 350ms ease 80ms;
     margin: 0;
     background-color: getCC(8, 3);
     border-radius: 1em;
@@ -108,11 +137,31 @@ span.inline {
 }
 
 .menu-toggled.active {
-  box-shadow: inset 0% 100% 0.2em 0em white;
   pointer-events: all;
+
+  span.effect {
+    // animation: menuToggledAppears 550ms ease-in-out forwards; // For Animation...
+  }
 
   .wrapper {
     transform: translateY(0%);
+  }
+}
+
+@keyframes menuToggledAppears {
+  0% {
+    box-shadow: none;
+  }
+
+  10%,
+  55% {
+    box-shadow: 0 0 1em 0.2em #fffc;
+    transform: scaleX(1);
+  }
+
+  100% {
+    box-shadow: 0 0 1em 0.07em #fffa;
+    transform: scaleX(0) translateY(-0.1em);
   }
 }
 
@@ -173,6 +222,17 @@ table {
     word-break: keep-all;
     line-break: strict;
 
+    &.delete {
+      // getCC(saturation, lightness, opacity, hue-adjust);
+
+      color: getCC(8, 6, 1, 45 - $main-hue);
+      cursor: pointer;
+      transition: color 300ms;
+
+      &:hover {
+        color: getCC(8, 5, 1, 10 - $main-hue);
+      }
+    }
   }
 }
 

@@ -1,0 +1,218 @@
+@import "./custom_scss";
+
+.template-content {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    @include flexing(column);
+}
+
+.template-top {
+    font-size: 1.3rem;
+    @include flexing(row);
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 2em 0;
+    background-color: getCC(4, 3);
+
+    div.interface {
+        @include flexing(row-reverse);
+
+        gap: 1em;
+
+        &:has(.page-links.active) {
+            transition: gap 300ms;
+
+            .profile {
+                transition-delay: 0ms;
+                transform: translateX(-5em);
+            }
+        }
+
+        .menu-wrapper {
+            $particle-length: 1.5em;
+            display: block;
+
+
+            div.wrapper.links.page-links {
+                // padding: 0.3em;
+
+                * {
+                    user-select: none;
+                }
+
+                @include flexing(column);
+                $menu-gap-height: $particle-length / 4;
+                gap: $menu-gap-height;
+
+                width: calc($particle-length * 1.1);
+                height: fit-content;
+                cursor: pointer;
+
+                &>.particle {
+                    border-radius: 3em;
+
+                    width: $particle-length;
+                    height: $particle-length / 8;
+                    // aspect-ratio: 8/1;
+                    background-color: getCC(8, 7);
+                    transition: all 225ms 50ms, translate 300ms 530ms, transform 300ms 300ms, width 200ms, box-shadow 260ms 0ms;
+                    position: relative;
+                    margin: 0;
+                    padding: 0;
+                    pointer-events: none;
+
+                    a {
+                        font-size: $particle-length / 1.23;
+                        font-family: "Aquire Light";
+                        font-stretch: condensed;
+                        letter-spacing: 0;
+                        transition: opacity 250ms ease, transform 300ms 125ms;
+                        transform-origin: bottom left;
+                        opacity: 0;
+                        color: white;
+                        outline: none;
+                        pointer-events: none;
+                        // font-size: 90%;
+                        text-decoration: none;
+                        display: flex;
+                        justify-content: center;
+
+                        // width: fit-content;
+                        @if(var(--page-name)=="about") {
+                            &:nth-child(1) {
+                                color: getCC(9, 9);
+                            }
+                        }
+
+                        @if(var(--page-name)=="home") {
+                            &:nth-child(2) {
+                                color: getCC(9, 9);
+                            }
+                        }
+
+                        @if(var(--page-name)=="news") {
+                            &:nth-child(3) {
+                                color: getCC(9, 9);
+                            }
+                        }
+                    }
+                }
+
+                &>.wrapper-exit {
+
+                    position: absolute;
+                    display: grid;
+                    place-items: center;
+                    inset: 10% 15% 0%;
+
+                    transform: translateY(50%);
+                    overflow: hidden;
+
+                    &>.particle {
+                        transition: translate 300ms 0ms;
+                        position: absolute;
+                        background-color: white;
+                        $exit-particle-width: $particle-length / 1.6;
+                        $exit-particle-aspect-ratio: 1/8;
+                        width: $exit-particle-width;
+                        height: $exit-particle-width * $exit-particle-aspect-ratio;
+                        transform-origin: center center;
+                        border-radius: $particle-length;
+                        translate: 0 -1000%;
+                        rotate: calc(var(--i) * 45deg);
+
+                    }
+                }
+
+                // Hover effect when compressed
+                $menu-hover-box-shadow: 0 0 0.2em 0 getCC(9, 8);
+
+                &:hover:not(.active) {
+                    .particle {
+                        box-shadow: $menu-hover-box-shadow;
+                    }
+                }
+
+                // When expended
+                &.active {
+
+                    // Hover effect when expended
+                    &:not(:has(.particle a:hover)):hover {
+                        &>.particle {
+                            transform: translateX(calc($particle-length * 2.5 * var(--i)));
+                            box-shadow: $menu-hover-box-shadow;
+                        }
+
+                        &>.wrapper-exit>.particle {
+                            box-shadow: $menu-hover-box-shadow;
+                        }
+                    }
+
+                    // particles positions
+                    &>.particle {
+                        transition: box-shadow 225ms 100ms, translate 325ms ease 250ms, transform 300ms, width 200ms, padding 200ms;
+                        transform: translateX(calc($particle-length * 2.75 * var(--i)));
+                        translate: 0 calc(calc(-1 * calc($menu-gap-height + calc($particle-length / 8))) * var(--i));
+
+                        &:has(:hover) {
+                            // width: calc($particle-length * 1.3);
+                            padding: 0.0em $particle-length / (18 / 4);
+                        }
+
+                        a {
+                            transition: opacity 300ms ease 100ms, transform 200ms, text-shadow 300ms;
+                            transform: translateY(-100%);
+                            position: static;
+                            // translate: 0 10px;
+                            opacity: 1;
+                            pointer-events: all;
+
+                            // Hover on text effect
+                            &:hover {
+                                text-shadow: 0 0 0.2em white, 0 0 0.5em white;
+                            }
+                        }
+
+                    }
+
+                    &>.wrapper-exit {
+                        &>.particle {
+                            transition: translate 300ms 100ms, box-shadow 300ms;
+                            translate: 0 50%;
+                        }
+                    }
+                }
+            }
+
+            .menu-effect-wrapper {
+                transition: all 300ms;
+                opacity: 0;
+                position: absolute;
+                @include flexing(row);
+
+                .particle {
+                    position: relative;
+                    aspect-ratio: 8/1;
+                    background-color: getCC(8, 7);
+                    width: $particle-length;
+                    transform-origin: top center;
+
+                    transform: translateX(calc(50% * var(--direction))) rotateZ(calc(-45deg * var(--direction)));
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            &:has(.active) {
+                .menu-effect-wrapper {
+                    opacity: 1;
+                    transform: translateY(1em);
+                }
+            }
+        }
+
+
+    }
+}

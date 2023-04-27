@@ -4,13 +4,13 @@ p,
 h1,
 h2,
 h3 {
-  color: getCC(10, 1, 1, 5);
+  color: getCC(10, 8, 1, 5);
   font-weight: 900;
 }
 
-form {
-  background-color: getCC(8, 5, 1, -5deg, 5, 7);
-  padding: 2vh;
+form.scout {
+  background-color: getCC(5, 2, 1, 0deg, 5, 7);
+  padding: 10vh;
   border-radius: 3vh;
   height: fit-content;
   margin: 3vh, 1vw;
@@ -31,7 +31,7 @@ datalist option {
 
 div.buttons-wrapper button,
 button.link,
-form button {
+form.scout button {
   font-size: 1.4rem;
 
   background-color: getCC(light, 3, 0.5);
@@ -42,7 +42,6 @@ form button {
 
   cursor: pointer;
   margin: 0.5em 0.2em;
-  padding: 0.2em 0.4em;
   transition: 250ms ease-in-out;
 
   &:hover {
@@ -51,7 +50,7 @@ form button {
   }
 }
 
-form button {
+form.scout button {
   font-size: 1.1em;
   color: getCC(10, 8);
 }
@@ -135,6 +134,7 @@ poles-display.back {
 
 switch-display {
   color: #000000;
+  --main-color: getCC(7, 7);
 }
 
 // h2 {

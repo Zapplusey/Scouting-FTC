@@ -8,18 +8,22 @@
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=yes">
     <title>Scouting 2023</title>
     <link rel="stylesheet" href="./Assets/Styling/style.css">
-    <script src="./Assets/Scripts/firebase_script.js" type="module"></script> -->
+    <script src="./Assets/Scripts/firebase_script.js" type="module"></script>
     <script src="./Assets/Scripts/YNselect.js"></script>
     <script src="./Assets/Scripts/numberDisplay.js"></script>
     <script src="./Assets/Scripts/switchDisplay.js"></script>
     <script src="./Assets/Scripts/filterSelect.js" defer></script>
     <script src="./Assets/Scripts/internetDetector.js" defer></script>
+    <script type="module">
+        import { loadContent } from "./Assets/Scripts/loader.js";
+        loadContent("./template.html", ".template-content");
+    </script>
 </head>
 
 <body>
 
     <div class="center">
-        <form class="hebrew">
+        <form class="hebrew scout">
             <h1 id="offline-wrapper" style="display: none;" data-refreshOffline="true"></h1>
 
             <h2>שם ממלא הטופס</h2>
@@ -101,7 +105,7 @@
             </yn-select>
 
             <h2>חנייה</h2>
-            <switch-display class="info input" data-tag="parking location-autonomous"
+            <switch-display class="info input" data-tag="parking location-autonomous" style="color: hsl(205,70,50)"
                 titles="חנייה לפי זיהוי תמונה;substation חנייה בתוך ;חנייה בטרמינל-משולש"></switch-display>
             <h1 class="title">TeleOp & EndGame</h1>
             <h2>כמה קונוסים שמו ב</h2>

@@ -24,15 +24,23 @@
                 onclick="window.open('./index.html', '_self')"><img
                     src="./Assets/Images/SVGs/logout-svgrepo-com.svg"></button>
 
-            <span class="menu-toggle inline button" style="--tooltip-text: 'Results';" data-menu-index="1">load</span>
-            <span class="menu-toggled inline" data-menu-index="1">
+            <span class="menu-toggle button" style="--tooltip-text: 'Results';" data-menu-index="1">reload</span>
+            <div class="menu-toggled" data-menu-index="1">
+                <span class="effect"></span>
                 <span class="wrapper">
                     <button class="refresh clickable" data-result-view-mode="forms">See all results</button>
                     <button class="refresh clickable" data-result-view-mode="averages">See averages (summary)</button>
                 </span>
-            </span>
+            </div>
             <input type="text" data-filtered-index="1" style="--tooltip-text: 'table (rows)';" class="tableFilters"
                 placeholder="filter">
+            <div class="button add or tableFilterKeeper" data-filtered-index="1">
+                <div class="text">OR</div>
+            </div>
+            <div class="button add and tableFilterKeeper" data-filtered-index="1">
+                <div class="text">AND</div>
+            </div>
+
             <!-- <button class="button toggle menu-toggle" style="z-index: 10">≡</button>
 
             <div class="menu">
@@ -44,7 +52,8 @@
     <div class="middle">
         <h1 style="display: none;" id="offline-wrapper" data-refreshOffline="false"></h1>
         <h1 class="heading hebrew">Results תוצאות:</h1>
-        <table class="results filterTable hebrew" data-filtered-index="1" id="result_viewer">
+        <table class="results filterTable hebrew offline-wrapper" data-filtered-index="1" data-exclude-filtered="0-2"
+            id="result_viewer">
 
         </table>
     </div>
