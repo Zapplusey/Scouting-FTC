@@ -28,6 +28,50 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: "Libre B";
+  src: url("Fonts/LibreBaskerville-Regular.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Libre B Italic";
+  src: url("Fonts/LibreBaskerville-Italic.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Petit Formal Script";
+  src: url("Fonts/PetitFormalScript-Regular.ttf");
+}
+@font-face {
+  font-family: "Oleo Script";
+  src: url("Fonts/OleoScriptSwashCaps-Regular.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Oleo Script Bold";
+  src: url("Fonts/OleoScriptSwashCaps-Bold.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Aquire Light";
+  src: url("Fonts/AquireLight-YzE0o.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Aquire";
+  src: url("Fonts/Aquire-BW0ox.otf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Welland";
+  src: url("Fonts/Welland-regular.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Kinfolk";
+  src: url("Fonts/Kinfolk.ttf");
+  font-weight: 300;
+}
 @media screen and (min-aspect-ratio: 10/9) {
   :root {
     font-size: 20px;
@@ -94,16 +138,32 @@ body * {
 }
 
 .template-top {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 5em;
-  padding: 2em 0;
-  background-color: hsl(205, 40%, 30%);
+  align-self: self-end center;
+  z-index: 3;
+  margin-bottom: 2em;
+  padding: 1.5em 0;
+  background-color: hsla(205, 53%, 25%, 0.8);
+  -webkit-backdrop-filter: blur(9px);
+          backdrop-filter: blur(9px);
+  position: relative;
+}
+.template-top div.logo-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+.template-top div.logo-section h1,
+.template-top div.logo-section h2 {
+  font-family: "Libre B";
 }
 .template-top div.interface {
   display: flex;
@@ -114,11 +174,119 @@ body * {
   gap: 1em;
 }
 .template-top div.interface:has(.page-links.active) {
-  transition: gap 300ms;
+  transition: gap 400ms;
 }
-.template-top div.interface:has(.page-links.active) .profile {
+.template-top div.interface:has(.page-links.active) #profile-menu {
   transition-delay: 0ms;
   transform: translateX(-5em);
+}
+.template-top div.interface #profile-menu {
+  transition: all 400ms 305ms;
+}
+.template-top div.interface #profile-menu.active div.login-main-menu div.login-page {
+  transform: translateY(0) translateZ(0);
+}
+.template-top div.interface #profile-menu.active img.profile {
+  scale: 1.05;
+  background-color: hsl(205, 50%, 50%);
+  box-shadow: 0 0 0.001em 0 rgba(0, 0, 0, 0.3) inset, 0 0 0.4em 0 rgba(0, 0, 0, 0.6);
+}
+.template-top div.interface #profile-menu img.profile {
+  position: relative;
+  width: 2em;
+  height: 2em;
+  aspect-ratio: 1/1;
+  padding: 0.3em;
+  border-radius: 1em;
+  background-color: hsl(209, 40%, 40%);
+  transition: 500ms;
+  box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.4) inset, 0 0 0.001em 0 rgba(0, 0, 0, 0.6);
+  scale: 1;
+}
+.template-top div.interface #profile-menu img.profile:hover {
+  transform: translateY(-0.4em);
+}
+.template-top div.interface #profile-menu img.profile:hover::before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background-color: black;
+  z-index: 5;
+  box-shadow: 0 -0.3em 0.2em 0 black;
+}
+.template-top div.interface #profile-menu div.login-main-menu {
+  position: absolute;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow-y: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page {
+  min-width: 7em;
+  opacity: 1;
+  pointer-events: all;
+  transition: transform 600ms;
+  transform: translateY(-102%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  position: relative;
+  color: hsl(205, 70%, 80%);
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: hsl(205, 60%, 20%);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page * {
+  opacity: 0.93;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page span.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page span.form input {
+  background-color: hsl(205, 70%, 40%);
+  outline: none;
+  border: none;
+  padding: 0.3em;
+  color: white;
+  margin: 0.3em;
+  border-radius: 0.5em;
+  font-size: 0.6em;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page span.form button {
+  margin: 0.3em;
+  border: none;
+  padding: 0.4em;
+  font-size: 1.1em;
+  font-family: "Libre B";
+  font-weight: 100;
+  color: hsl(205, 70%, 80%);
+  background-color: hsl(205, 60%, 30%);
+  border-radius: 0.3em;
+  transition: all 300ms;
+  box-shadow: 0 0 0.0001em 0 hsla(205, 12%, 12%, 0.5);
+  cursor: pointer;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page span.form button:hover {
+  scale: 1.02;
+  color: hsl(205, 90%, 90%);
+  background-color: hsl(205, 71%, 43%);
+  box-shadow: 0 0 0.7em 0 hsla(205, 12%, 12%, 0.9);
 }
 .template-top div.interface .menu-wrapper {
   display: block;
@@ -201,7 +369,7 @@ body * {
   translate: 0 calc(-0.5625em * var(--i));
 }
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle:has(:hover) {
-  padding: 0em 0.3333333333em;
+  padding: 0em 0.2727272727em;
 }
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle a {
   transition: opacity 300ms ease 100ms, transform 200ms, text-shadow 300ms;

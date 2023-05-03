@@ -1,149 +1,167 @@
-@import "custom_scss";
+@import "./custom_scss";
+
+
 
 p,
 h1,
 h2,
 h3 {
-  color: getCC(10, 8, 1, 5);
-  font-weight: 900;
+    color: getCC(10, 8, 1, 5);
+    font-weight: 900;
+
 }
 
-form.scout {
-  background-color: getCC(5, 2, 1, 0deg, 5, 7);
-  padding: 10vh;
-  border-radius: 3vh;
-  height: fit-content;
-  margin: 3vh, 1vw;
-  padding: 3vh;
-  min-width: 40vw;
-  @include flexing(column, $item-alignment: center);
-  row-gap: 1em;
+div.content {
+    p {
+        margin: 0 10vw;
+        padding: 0.4em;
+        text-align: justify;
+        border-radius: 1em;
+        @include glass();
 
-  * {
-    text-align: right;
-  }
+        // &::first-letter {
+        //     border: 0.2em solid getCC(7, 7, 0.4);
+        //     border-style: double;
+        //     border-top: none;
+        //     border-bottom: none;
+        //     border-radius: 3em;
+        // }
+    }
+
+    min-height: 25vh;
+    width: 100%;
+
+    @include flexing(column);
+
+    p {
+        font-size: xx-large;
+    }
 }
 
-datalist option {
-  font-size: 200%;
-  color: black;
-}
+div.dashboard {
+    @include flexing(row, space-around);
+    min-width: 60vw;
+    height: fit-content;
 
-div.buttons-wrapper button,
-button.link,
-form.scout button {
-  font-size: 1.4rem;
+    div.sign-in-menu {
 
-  background-color: getCC(light, 3, 0.5);
-  $main-color: getCC(9, 7);
-  color: $main-color;
-  border: 0.2em $main-color solid;
-  border-radius: 0.4em;
+        height: fit-content;
+        width: auto;
 
-  cursor: pointer;
-  margin: 0.5em 0.2em;
-  transition: 250ms ease-in-out;
+        font-size: 155%;
+        color: getCC(7, 8);
+        @include flexing(column, space-around);
+        background-color: getCC(6, 2);
+        padding: 4vw 4vh;
+        padding-top: 2vw;
+        border-radius: 2em;
+        box-shadow: 0 0 0.8em 0 getCC(1, 1, 0.6, 0, 3, 3);
 
-  &:hover {
-    box-shadow: 0em 0em 0.2em 0em $main-color inset,
-      0em 0em 0.35em 0em $main-color inset;
-  }
-}
+        h2,
+        h3 {
+            margin: 0 0 0.3em;
+            text-transform: capitalize;
+            font-family: "Aquire";
+        }
 
-form.scout button {
-  font-size: 1.1em;
-  color: getCC(10, 8);
-}
+        switch-display {
+            font-size: 0.8em;
+        }
 
-input,
-select,
-option {
-  margin-left: 0px;
-  margin-right: 0px;
-  width: 100%;
-  background-color: getCC(8, 7);
-  border-radius: 3vh;
-  color: black;
-  min-height: 3vh;
-  min-width: 3vh;
-}
+        input {
+            font-size: 0.7em;
+            background-color: getCC(7, 4);
+            outline: none;
+            border: none;
+            padding: 0.3em;
+            color: white;
+            border-radius: 0.5em;
+        }
 
-div.center {
-  width: fit-content;
-  min-height: 100vh;
-  height: fit-content;
-}
+        .input {
+            margin: 0.3em;
+        }
 
-yn-select {
-  // background-color: getCC(5, 3);
-  border-radius: 0.4em;
-  background-color: getCC(7, 3, 1, 130deg);
-  transition: all 300ms ease-in-out;
-  color: getCC(10, 9, 1, 70deg);
-  position: relative;
-  align-self: center;
-  box-shadow: 0em 0em 0.3em 0em getCC(10, 1) inset,
-    0em 0em 0.6em 0em getCC(10, 2) inset;
-  display: inline;
-}
+        button {
+            margin: 0.3em;
+            border: none;
+            padding: 0.4em;
+            font-size: 1.1em;
+            // font-family: "Petit Formal Script";
+            font-family: "Libre B";
+            font-weight: 500;
+            color: getCC(7, 8);
+            background-color: getCC(6, 3);
+            border-radius: 0.3em;
+            transition: all 300ms;
+            box-shadow: 0 0 0.0001em 0 getCC(1, 1, 0.5, 0, 2, 2);
+            cursor: pointer;
 
-h2,
-h3 {
-  width: fit-content;
-  font-size: 110%;
-  display: inline;
-}
+            &:hover {
+                scale: 1.02;
+                color: getCC(9, 9);
+                background-color: getCC(7, 4, 1, 0, 1, 3);
+                box-shadow: 0 0 0.7em 0 getCC(1, 1, 0.9, 0, 2, 2);
+            }
+        }
+    }
 
-yn-select[value="true"] {
-  background-color: getCC(7, 6, 1, -70deg);
-  color: getCC(10, 2, 1, -60deg);
-}
+    div.message-menu {
+        font-size: 155%;
+        color: getCC(7, 8);
 
-yn-select:hover {
-  box-shadow: 0em 0em 0.4em 0em getCC(10, 8, 1, -20deg) inset;
-}
+        @include flexing(column, space-around);
+        background-color: getCC(6, 2);
+        padding: 4vw 4vh;
+        padding-top: 2vw;
+        border-radius: 2em;
+        box-shadow: 0 0 0.8em 0 getCC(1, 1, 0.6, 0, 3, 3);
 
-.info.input {
-  text-align: center;
-}
+        h2 {
+            font-family: "Aquire";
+        }
 
-$back-color: getCC(7, 3, 1, 0deg, 0, -4);
+        min-height: 7em;
+        max-height: 17em;
 
-div.pole-display-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-  background-color: $back-color;
-  padding: 0.3vh 2vh;
-  border-radius: 3vh;
-  gap: 1vh;
-  box-shadow: 0 0 2vh 0 $back-color, 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
+        div.messages-container {
+            max-width: 11em;
+            height: 14em;
+            overflow-y: scroll;
+            padding: 0.3em;
+            @include flexing(column);
+            background-color: none;
 
-  * {
-    color: white;
-  }
-}
+            .message {
+                background-color: getCC(5, 3);
+                padding: 0.2em;
+                border-radius: 0.2em;
+                margin: 0.3em 0;
+                color: getCC(10, 9);
+                transition: transform 400ms, opacity 400ms;
+                height: fit-content;
 
-poles-display.back {
-  background-color: $back-color;
-  padding: 2vh 2vh;
-  border-radius: 3vh;
-  box-shadow: 0 0 2vh 0 $back-color, 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
-  color: white;
-}
+                &.removed {
+                    transform: translateY(2em);
+                    opacity: 0;
+                }
 
-switch-display {
-  color: #000000;
-  --main-color: getCC(7, 7);
-}
+                .action {
+                    margin: 0.1em;
+                    letter-spacing: 0.0em;
+                    cursor: pointer;
+                    font-family: "Kinfolk";
+                    font-weight: 600;
+                    transition: all 300ms;
+                    color: getCC(10, 7);
 
-// h2 {
-//   font-size: 90%;
-// }
-
-h1.title,
-h2.title {
-  text-decoration: underline;
-  font-size: 160%;
-  margin: 0.7em 0.1em;
+                    &:hover {
+                        color: getCC(10, 9);
+                        font-size: 106%;
+                        text-shadow: 0 0 0.2em getCC(7, 7, 0.8), 0 0 0.4em getCC(0, 0, 0.5);
+                    }
+                }
+            }
+        }
+    }
 }

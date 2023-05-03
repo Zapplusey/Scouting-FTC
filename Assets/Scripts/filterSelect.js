@@ -93,14 +93,15 @@ const addSelectEvent = () => {
   const r = document.getElementById("selectTeamsRoundInput");
   const s = document.getElementById("teamRoundsSelector");
   console.log(b, r, s);
-  b.addEventListener("click", () => {
-    addOptions(s, r.value);
-  });
+  if (b & r & s)
+    b.addEventListener("click", () => {
+      addOptions(s, r.value);
+    });
 };
 
 const addOptions = (s, num = 1) => {
   s.innerHTML = "";
-  roundsTeams[num].forEach((team) => {
+  roundsTeams[num].forEach(team => {
     let option_ = document.createElement("option");
     option_.innerHTML = TeamNames[team] + " #" + team;
     s.appendChild(option_);

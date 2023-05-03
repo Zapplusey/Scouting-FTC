@@ -5,7 +5,7 @@ class SwitchDisplay extends HTMLElement {
     // Setting / declaring values...
     this.localShadow = this.attachShadow({ mode: "open" });
     this.defaultSize = 3;
-    this.default_style_color = "#102466";
+    this.default_style_color = "#80AFEE";
     this.value = "No selection";
     this.selectionIndex = 0;
 
@@ -20,7 +20,7 @@ class SwitchDisplay extends HTMLElement {
 
             </table>
             <style> 
-                /*.all-wrapper { --main_color: ${this.default_style_color}; }*/
+                .all-wrapper { --main_color: ${this.default_style_color}; }
                     
                 
                 .all-wrapper, tr, tbody {
@@ -40,7 +40,7 @@ class SwitchDisplay extends HTMLElement {
                   flex-direction: row;
                   
                   height: max-content;
-                  margin: 0em 0.3em;
+                  margin: 0em 0.2em;
                 }
                 .all-wrapper *, tbody *, tbody {
                     position: relative;

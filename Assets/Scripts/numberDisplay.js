@@ -66,15 +66,14 @@ class numberDisplay extends HTMLElement {
 
     // Setting up attributes and values...
     this.setValue(this.defaultValue);
-    this.localShadow.querySelectorAll("#adder, #reducer").forEach((e) => {
+    this.localShadow.querySelectorAll("#adder, #reducer").forEach(e => {
       e.setAttribute("currentTimeOut", "NONE");
     });
 
     // Setting up events...
-    const displayClick = (e) => {
+    const displayClick = e => {
       e.classList.add("clicked");
-      if (e.getAttribute("currentTimeOut") != "NONE")
-        window.clearTimeout(parseInt(e.getAttribute("currentTimeOut"))); // Removes previous timeout
+      if (e.getAttribute("currentTimeOut") != "NONE") window.clearTimeout(parseInt(e.getAttribute("currentTimeOut"))); // Removes previous timeout
       e.setAttribute(
         "currentTimeOut",
         window.setTimeout(() => {
@@ -86,20 +85,16 @@ class numberDisplay extends HTMLElement {
 
     let number_display = this.localShadow.getElementById("num_display");
 
-    this.localShadow
-      .getElementById("adder")
-      .addEventListener("click", (eve) => {
-        let updatedNum = parseInt(number_display.innerHTML) + 1;
-        this.setValue(updatedNum);
-        displayClick(this.localShadow.getElementById("adder"));
-      });
-    this.localShadow
-      .getElementById("reducer")
-      .addEventListener("click", (eve) => {
-        let currentNum = parseInt(number_display.innerHTML);
-        this.setValue(currentNum > 0 ? currentNum - 1 : currentNum);
-        displayClick(this.localShadow.getElementById("reducer"));
-      });
+    this.localShadow.getElementById("adder").addEventListener("click", eve => {
+      let updatedNum = parseInt(number_display.innerHTML) + 1;
+      this.setValue(updatedNum);
+      displayClick(this.localShadow.getElementById("adder"));
+    });
+    this.localShadow.getElementById("reducer").addEventListener("click", eve => {
+      let currentNum = parseInt(number_display.innerHTML);
+      this.setValue(currentNum > 0 ? currentNum - 1 : currentNum);
+      displayClick(this.localShadow.getElementById("reducer"));
+    });
   }
 
   setValue(value) {
@@ -117,12 +112,10 @@ class numberDisplay extends HTMLElement {
     switch (name) {
       case "value":
         this.value = newValue;
-        this.localShadow.getElementById("num_display").innerHTML =
-          newValue.toString();
+        this.localShadow.getElementById("num_display").innerHTML = newValue.toString();
         break;
       case "changable":
-        const tempFunc = (e) =>
-          (e.style.display = newValue == "true" ? "inline-block" : "none");
+        const tempFunc = e => (e.style.display = newValue == "true" ? "inline-block" : "none");
         tempFunc(this.localShadow.getElementById("adder"));
         tempFunc(this.localShadow.getElementById("reducer"));
     }
@@ -200,15 +193,10 @@ class polesDisplay extends HTMLElement {
         break;
       case "image":
         if (typeof newValue === "string" || newValue instanceof String)
-          this.localShadow
-            .getElementById("image-display")
-            .setAttribute("src", newValue);
+          this.localShadow.getElementById("image-display").setAttribute("src", newValue);
         break;
       case "title":
-        if (
-          (typeof newValue === "string" || newValue instanceof String) &&
-          newValue != ""
-        ) {
+        if ((typeof newValue === "string" || newValue instanceof String) && newValue != "") {
           this.localShadow.getElementById("title").innerHTML = newValue;
         }
         break;
@@ -217,10 +205,7 @@ class polesDisplay extends HTMLElement {
 
   refreshDisplays(oldValue, newValue) {
     if (isNaN(newValue) || parseInt(oldValue) == parseInt(newValue)) return;
-    const displayWrapper = this.localShadow.getElementById(
-      "number-display-wrapper"
-    );
-    // console.log(displayWrapper);
+    const displayWrapper = this.localShadow.getElementById("number-display-wrapper");
     if (displayWrapper != null) {
       displayWrapper.innerHTML = "";
       for (let c = 0; c < parseInt(newValue); c++) {
@@ -254,16 +239,13 @@ class polesDisplay extends HTMLElement {
   }
 
   setChangable(b = false) {
-    this.localShadow.querySelectorAll("number-display").forEach((nd) => {
+    this.localShadow.querySelectorAll("number-display").forEach(nd => {
       nd.setAttribute("changable", b);
     });
   }
 
   setDisplay(index, value) {
-    this.localShadow
-      .querySelectorAll("number-display")
-      .item(index)
-      .setValue(value);
+    this.localShadow.querySelectorAll("number-display").item(index).setValue(value);
   }
 
   static get observedAttributes() {

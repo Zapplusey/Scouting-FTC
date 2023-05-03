@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="hebrew">
+
+<head>
+    <meta charset="UTF-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>Scouting 2023</title>
+    <link rel="stylesheet" href="./Assets/Styling/scout.css">
+    <script type="module">
+        import { redirectByPosition } from "./Assets/Scripts/userform.js";
+        redirectByPosition("scouter");
+    </script>
+    <script type="module">
+        import { loadContent } from "./Assets/Scripts/loader.js";
+        loadContent("./template.html", ".template-content");
+    </script>
+
+    <script src="./Assets/Scripts/YNselect.js"></script>
+    <script src="./Assets/Scripts/numberDisplay.js"></script>
+    <script src="./Assets/Scripts/switchDisplay.js"></script>
+    <script src="./Assets/Scripts/filterSelect.js" defer></script>
+    <script src="./Assets/Scripts/internetDetector.js" defer></script>
+
+</head>
+
+<body>
+    <script src="./Assets/Scripts/firebase_script.js" type="module" defer></script>
+    <div class="center">
+        <form class="hebrew scout">
+            <h1 id="offline-wrapper" style="display: none;" data-refreshOffline="true"></h1>
+
+            <h2>שם ממלא הטופס</h2>
+            <input type="text" data-tag="scouter's name" class="info input" id="scouter_name"
+                data-hebrew-tag="שם ממלא הטופס" placeholder="שמך" required>
+            <h2>שם קבוצה ומספר</h2>
+            <input data-tag="name" type="text" class="info input" id="teamRoundsSelector" list="teams_suggest"
+                data-hebrew-tag="שם קבוצה ומספר" json="שם קבוצה ומספר" required>
+            <datalist id="teams_suggest">
+                <option index="1">Orbit Vikings #14029</option>
+                <option index="2">Fata Morgana #15637</option>
+                <option index="3">Mishmash #12016</option>
+                <option index="4">Deagles #22144</option>
+                <option index="5">Black Tigers #11192</option>
+                <option index="6">Super Nova #11567</option>
+                <option index="7">Roboten #15298</option>
+                <option index="8">Scifighters #16473</option>
+                <option index="9">Tatooine #12201</option>
+                <option index="10">Connection #11808</option>
+                <option index="11">Blackbeard #17019</option>
+                <option index="12">Boosteam #15811</option>
+                <option index="13">Jotanheim #22734</option>
+                <option index="14">BTJ #13452</option>
+                <option index="15">Atmoix #11443</option>
+                <option index="16">Orbit 12 #14028</option>
+                <option index="17">Orbit #14872</option>
+                <option index="18">Orange Fox #12363</option>
+                <option index="19">Apollo #9662</option>
+                <option index="20">Makers Assemble #13146</option>
+                <option index="21">Achva Gilboa #11803</option>
+                <option index="22">AM.I.T #15141</option>
+                <option index="23">Fireflies #21656</option>
+                <option index="24">Mechanic Makers #17056</option>
+                <option index="25">Megiddo Lions #18833</option>
+                <option index="26">Team Hydra #22947</option>
+                <option index="27">Meggido Lions #12797</option>
+                <option index="28">Quack Attack #11635</option>
+                <option index="29">AIS Talons #19967</option>
+                <option index="30">Velocity #19766</option>
+                <option index="31">Goblin Mode #21957</option>
+                <option index="32">Ray Ladies #22644</option>
+                <option index="33">Bomba #14869</option>
+                <option index="34">Ringostar #18735</option>
+                <option index="35">Black Thunder #11226</option>
+                <option index="36">Everglow #19000</option>
+                <option index="37">Eclipse #21796</option>
+                <option index="38">Arava #21850</option>
+                <option index="39">Build For Change #20669</option>
+                <option index="40">Alhekma #22764</option>
+                <option index="41">Plantech #17106</option>
+                <option index="42">Super Cow #12989</option>
+                <option index="43">Hof Hasharon #21770</option>
+                <option index="44">Mizpe Yam #22646</option>
+                <option index="45">Everest #12817</option>
+                <option index="46">Amal Maale Adumim#22681</option>
+                <option index="47">Red Mask #17182</option>
+                <option index="48">Sycatech #18268</option>
+            </datalist>
+            <!-- </select> -->
+            <h2>בחר מקצה</h2>
+            <input data-tag="round" type="number" name="" id="selectTeamsRoundInput" class="info input"
+                data-hebrew-tag="מקצה" min="0" json="מקצה">
+            <!-- <button id="selectTeamsRoundButton" type="button">בחר</button> -->
+            <!-- TODO: Add toggle for filter selection button -->
+            <h1 class="title">אוטנומי</h1>
+            <h2>כמה קונוסים שמו ב</h2>
+            <div class="pole-display-wrapper">
+                <poles-display displays="1" image="./Assets/Images/HighJunctionPost.png" title="High"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/MidJunctionPost.png" title="Mid"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/LowJunctionPost.png" title="Low"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/GroundJunctionPost.png"
+                    title="Ground"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/terminal.png" title="Terminal"
+                    style="grid-column: span 2;"></poles-display>
+            </div>
+            <h2>מיקום חניה נכון</h2>
+            <yn-select data-tag="Correct parking-autonomous" type="checkbox" class="info input" id="name"
+                data-hebrew-tag="מיקום חניה נכון אוטנומי" json="מיקום חניה נכון אוטנומי">
+            </yn-select>
+
+            <h2>חנייה</h2>
+            <switch-display class="info input" data-tag="parking location-autonomous" style="color: hsl(205,70,50)"
+                titles="חנייה לפי זיהוי תמונה;substation חנייה בתוך ;חנייה בטרמינל-משולש"></switch-display>
+            <h1 class="title">TeleOp & EndGame</h1>
+            <h2>כמה קונוסים שמו ב</h2>
+            <div class="pole-display-wrapper">
+                <poles-display displays="1" image="./Assets/Images/HighJunctionPost.png" title="High"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/MidJunctionPost.png" title="Mid"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/LowJunctionPost.png" title="Low"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/GroundJunctionPost.png"
+                    title="Ground"></poles-display>
+                <poles-display displays="1" image="./Assets/Images/terminal.png" title="Terminal"
+                    style="grid-column: span 2;"></poles-display>
+            </div>
+            <h2>האם שמו את האלמנט המיוחד שלהם</h2>
+            <yn-select data-tag="Is element placed-endgame" class="info input" type="checkbox"
+                title="EndGame האם שמו את האלמנט המיוחד שלהם" data-hebrew-tag="EndGame האם שמו את האלמנט המיוחד שלהם"
+                json="EndGame האם שמו את האלמנט המיוחד שלהם" value="off" show="true">
+
+            </yn-select>
+            <h2>האם הרובוט חנה</h2>
+            <yn-select data-tag="Is parked-endgame" class="info input" type="checkbox" title="האם הרובוט חנה"
+                data-hebrew-tag="EndGame האם הרובוט חנה" json="EndGame האם הרובוט חנה" index="20"
+                value="off"></yn-select>
+            <h2>האם יש להם סדר מקצה לקצה של הקונוסים</h2>
+            <yn-select data-tag="Is circuit complete-endgame" class="info input" type="checkbox"
+                title="האם יש להם סדר מקצה לקצה של הקונוסים" data-hebrew-tag="האם יש להם סדר מקצה לקצה של הקונוסים"
+                value="off"></yn-select>
+            <h2 class="title">עבירות</h2>
+            <h2>האם הרובוט עשה עבירה</h2>
+            <yn-select data-tag="Did the robot cause a penalty" data-input-index="23" class="info input" type="checkbox"
+                data-hebrew-tag="האם הרובוט עשה עבירה" index="23" value="off">
+            </yn-select>
+            <h2>האם השחקן האנושי עשה עברה</h2>
+            <yn-select data-tag="Did the human player cause a penalty" data-input-index="24" class="info input"
+                type="checkbox" data-hebrew-tag="האם השחקן האנושי עשה עברה" index="24" value="off">
+            </yn-select>
+            <h2>האם האוטונומי אמין</h2>
+            <yn-select data-tag="Is the autonomous reliable" class="info input" type="checkbox"
+                data-hebrew-tag="האם האוטונומי אמין" value="off">
+            </yn-select>
+            <h2>האם הם הפריעו לרובוט שאיתם</h2>
+            <yn-select data-tag="Did they interupt the other team/team's robot" class="info input" type="checkbox"
+                data-hebrew-tag="האם הם הפריעו לרובוט שאיתם" value="off">
+            </yn-select>
+            <h2>הערות</h2>
+            <input class="info input" data-tag="Comments" placeholder="הערות" type="text" data-hebrew-tag="הערות">
+        </form>
+        <div class="buttons-wrapper">
+            <button class="button SubButton" id="sub">Submit📩🔁</button>
+            <button class="link" onclick="window.open('./results.html','_self')">See Results</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

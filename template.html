@@ -12,9 +12,12 @@
         mainMenuElem.addEventListener("click", (event) => {
             event.currentTarget.classList.toggle("active");
         });
-
-
+        const profileMenu = document.querySelector(".template-top .interface #profile-menu");
+        profileMenu.querySelector(".profile.hoverable.clickable").addEventListener("click", () => {
+            profileMenu.classList.toggle("active");
+        });
     </script>
+    <script src="Assets/Scripts/template.js" type="module" defer></script>
 </head>
 
 <body>
@@ -28,15 +31,40 @@
 
             <div class="menu-wrapper">
                 <div class="wrapper links page-links button " id="top-nav-main-menu">
-                    <div class="particle" style="--i: -1;"><a href="./about.html">ABOUT</a></div>
+                    <div class="particle" style="--i: -1;"><a href="./scout.html">SCOUT</a></div>
                     <div class="particle" style="--i: 0;"><a href="./index.html">HOME</a></div>
-                    <div class="particle" style="--i: 1;"><a href="./tools.html">NEWS</a></div>
+                    <div class="particle" style="--i: 1;"><a href="./results.html">TABLE</a></div>
                     <div class="wrapper-exit">
                         <div class="particle symbol" style="--i: -1"></div>
                         <div class="particle symbol" style="--i: 1"></div>
                     </div>
                 </div>
             </div>
+            <div id="profile-menu">
+                <img src="./Assets/Images/SVGs/profile-user-svgrepo-com.svg" alt="" class="profile hoverable clickable">
+                <div class="login-main-menu">
+
+                    <div class="login-page hoverable">
+                        <span class="form">
+                            <h2>log in</h2>
+                            <label for="user-name">Username</label>
+                            <input class="user-name" name="user-name" type="text">
+                            <label for="password">password</label>
+                            <input class="password" name="password" type="text">
+                            <button class="btn submit">Submit</button>
+                            <div class="note-text error">
+                                welcome!
+                            </div>
+                        </span>
+                        <div class="note-text logged">
+                            Hello <span class="text position"></span> <span class="text person"></span>, you're logged
+                            in.
+                            <span class="logout" style="text-decoration:underline; cursor: pointer;">Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="template-content">

@@ -7,12 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
     <link rel="stylesheet" href="./Assets/Styling/results.css">
+    <script type="module">
+        import { loadContent } from "./Assets/Scripts/loader.js";
+        loadContent("./template.html", ".template-content");
+    </script>
+    <script>
+        console.log("WELCOME TO RESULTS");
+    </script>
     <script src="./Assets/Scripts/results.js" type="module" defer></script>
     <script src="./Assets/Scripts/numberDisplay.js"></script>
     <script src="./Assets/Scripts/internetDetector.js"></script>
     <!-- <script src="./Assets/Scripts/toggleButton.js" defer></script> -->
     <script src="./Assets/Scripts/tableFilter.js" defer></script>
     <script src="./Assets/Scripts/menuToggle.js"></script>
+    <script type="module">
+        import { redirectByPosition } from "./Assets/Scripts/userform.js";
+        redirectByPosition("observer");
+    </script>
+
 </head>
 
 <body>

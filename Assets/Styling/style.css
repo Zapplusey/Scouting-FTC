@@ -28,6 +28,50 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: "Libre B";
+  src: url("Fonts/LibreBaskerville-Regular.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Libre B Italic";
+  src: url("Fonts/LibreBaskerville-Italic.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Petit Formal Script";
+  src: url("Fonts/PetitFormalScript-Regular.ttf");
+}
+@font-face {
+  font-family: "Oleo Script";
+  src: url("Fonts/OleoScriptSwashCaps-Regular.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Oleo Script Bold";
+  src: url("Fonts/OleoScriptSwashCaps-Bold.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Aquire Light";
+  src: url("Fonts/AquireLight-YzE0o.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Aquire";
+  src: url("Fonts/Aquire-BW0ox.otf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Welland";
+  src: url("Fonts/Welland-regular.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Kinfolk";
+  src: url("Fonts/Kinfolk.ttf");
+  font-weight: 300;
+}
 @media screen and (min-aspect-ratio: 10/9) {
   :root {
     font-size: 20px;
@@ -89,137 +133,154 @@ h3 {
   font-weight: 900;
 }
 
-form.scout {
-  background-color: hsl(205, 55%, 27%);
-  padding: 10vh;
-  border-radius: 3vh;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin: 3vh, 1vw;
-  padding: 3vh;
-  min-width: 40vw;
+div.content {
+  min-height: 25vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
   align-items: center;
-  row-gap: 1em;
 }
-form.scout * {
-  text-align: right;
+div.content p {
+  margin: 0 10vw;
+  padding: 0.4em;
+  text-align: justify;
+  border-radius: 1em;
+  background: linear-gradient(135deg, hsla(205, 10%, 100%, 0.1), hsla(205, 10%, 100%, 0));
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border: 1px solid hsla(205, 10%, 100%, 0.18);
+  box-shadow: 0 7.9998144358px 32.0000000005px 0 hsla(205, 10%, 10%, 0.37);
 }
-
-datalist option {
-  font-size: 200%;
-  color: black;
-}
-
-div.buttons-wrapper button,
-button.link,
-form.scout button {
-  font-size: 1.4rem;
-  background-color: hsla(205, 100%, 30%, 0.5);
-  color: hsl(205, 90%, 70%);
-  border: 0.2em hsl(205, 90%, 70%) solid;
-  border-radius: 0.4em;
-  cursor: pointer;
-  margin: 0.5em 0.2em;
-  transition: 250ms ease-in-out;
-}
-div.buttons-wrapper button:hover,
-button.link:hover,
-form.scout button:hover {
-  box-shadow: 0em 0em 0.2em 0em hsl(205, 90%, 70%) inset, 0em 0em 0.35em 0em hsl(205, 90%, 70%) inset;
+div.content p {
+  font-size: xx-large;
 }
 
-form.scout button {
-  font-size: 1.1em;
-  color: hsl(205, 100%, 80%);
-}
-
-input,
-select,
-option {
-  margin-left: 0px;
-  margin-right: 0px;
-  width: 100%;
-  background-color: hsl(205, 80%, 70%);
-  border-radius: 3vh;
-  color: black;
-  min-height: 3vh;
-  min-width: 3vh;
-}
-
-div.center {
-  width: -moz-fit-content;
-  width: fit-content;
-  min-height: 100vh;
+div.dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  min-width: 60vw;
   height: -moz-fit-content;
   height: fit-content;
 }
-
-yn-select {
-  border-radius: 0.4em;
-  background-color: hsl(335, 70%, 30%);
-  transition: all 300ms ease-in-out;
-  color: hsl(275, 100%, 90%);
-  position: relative;
-  align-self: center;
-  box-shadow: 0em 0em 0.3em 0em hsl(205, 100%, 10%) inset, 0em 0em 0.6em 0em hsl(205, 100%, 20%) inset;
-  display: inline;
+div.dashboard div.sign-in-menu {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: auto;
+  font-size: 155%;
+  color: hsl(205, 70%, 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  background-color: hsl(205, 60%, 20%);
+  padding: 4vw 4vh;
+  padding-top: 2vw;
+  border-radius: 2em;
+  box-shadow: 0 0 0.8em 0 hsla(205, 13%, 13%, 0.6);
 }
-
-h2,
-h3 {
-  width: -moz-fit-content;
-  width: fit-content;
-  font-size: 110%;
-  display: inline;
+div.dashboard div.sign-in-menu h2,
+div.dashboard div.sign-in-menu h3 {
+  margin: 0 0 0.3em;
+  text-transform: capitalize;
+  font-family: "Aquire";
 }
-
-yn-select[value=true] {
-  background-color: hsl(135, 70%, 60%);
-  color: hsl(145, 100%, 20%);
+div.dashboard div.sign-in-menu switch-display {
+  font-size: 0.8em;
 }
-
-yn-select:hover {
-  box-shadow: 0em 0em 0.4em 0em hsl(185, 100%, 80%) inset;
-}
-
-.info.input {
-  text-align: center;
-}
-
-div.pole-display-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-  background-color: hsl(205, 70%, 26%);
-  padding: 0.3vh 2vh;
-  border-radius: 3vh;
-  gap: 1vh;
-  box-shadow: 0 0 2vh 0 hsl(205, 70%, 26%), 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
-}
-div.pole-display-wrapper * {
+div.dashboard div.sign-in-menu input {
+  font-size: 0.7em;
+  background-color: hsl(205, 70%, 40%);
+  outline: none;
+  border: none;
+  padding: 0.3em;
   color: white;
+  border-radius: 0.5em;
 }
-
-poles-display.back {
-  background-color: hsl(205, 70%, 26%);
-  padding: 2vh 2vh;
-  border-radius: 3vh;
-  box-shadow: 0 0 2vh 0 hsl(205, 70%, 26%), 0 0 3vh 0 rgba(0, 0, 0, 0.9) inset;
-  color: white;
+div.dashboard div.sign-in-menu .input {
+  margin: 0.3em;
 }
-
-switch-display {
-  color: #000000;
-  --main-color: getCC(7, 7);
+div.dashboard div.sign-in-menu button {
+  margin: 0.3em;
+  border: none;
+  padding: 0.4em;
+  font-size: 1.1em;
+  font-family: "Libre B";
+  font-weight: 500;
+  color: hsl(205, 70%, 80%);
+  background-color: hsl(205, 60%, 30%);
+  border-radius: 0.3em;
+  transition: all 300ms;
+  box-shadow: 0 0 0.0001em 0 hsla(205, 12%, 12%, 0.5);
+  cursor: pointer;
 }
-
-h1.title,
-h2.title {
-  text-decoration: underline;
-  font-size: 160%;
-  margin: 0.7em 0.1em;
+div.dashboard div.sign-in-menu button:hover {
+  scale: 1.02;
+  color: hsl(205, 90%, 90%);
+  background-color: hsl(205, 71%, 43%);
+  box-shadow: 0 0 0.7em 0 hsla(205, 12%, 12%, 0.9);
+}
+div.dashboard div.message-menu {
+  font-size: 155%;
+  color: hsl(205, 70%, 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  background-color: hsl(205, 60%, 20%);
+  padding: 4vw 4vh;
+  padding-top: 2vw;
+  border-radius: 2em;
+  box-shadow: 0 0 0.8em 0 hsla(205, 13%, 13%, 0.6);
+  min-height: 7em;
+  max-height: 17em;
+}
+div.dashboard div.message-menu h2 {
+  font-family: "Aquire";
+}
+div.dashboard div.message-menu div.messages-container {
+  max-width: 11em;
+  height: 14em;
+  overflow-y: scroll;
+  padding: 0.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  background-color: none;
+}
+div.dashboard div.message-menu div.messages-container .message {
+  background-color: hsl(205, 50%, 30%);
+  padding: 0.2em;
+  border-radius: 0.2em;
+  margin: 0.3em 0;
+  color: hsl(205, 100%, 90%);
+  transition: transform 400ms, opacity 400ms;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+div.dashboard div.message-menu div.messages-container .message.removed {
+  transform: translateY(2em);
+  opacity: 0;
+}
+div.dashboard div.message-menu div.messages-container .message .action {
+  margin: 0.1em;
+  letter-spacing: 0em;
+  cursor: pointer;
+  font-family: "Kinfolk";
+  font-weight: 600;
+  transition: all 300ms;
+  color: hsl(205, 100%, 70%);
+}
+div.dashboard div.message-menu div.messages-container .message .action:hover {
+  color: hsl(205, 100%, 90%);
+  font-size: 106%;
+  text-shadow: 0 0 0.2em hsla(205, 70%, 70%, 0.8), 0 0 0.4em hsla(205, 0%, 0%, 0.5);
 }

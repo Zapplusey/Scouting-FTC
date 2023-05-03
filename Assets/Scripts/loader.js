@@ -7,41 +7,79 @@ export function loadContent(url, selector) {
     // check for success
     if (xhr.readyState === xhr.DONE) {
       if (xhr.status === 200) {
+        if (document.querySelector("script[data-executed]") != null) return;
         // parse the response as HTML
         const response = xhr.responseXML;
-        markScripts(true);
-        const wrapper = response.querySelectorAll(selector)[0];
-        wrapper.innerHTML = document.body.innerHTML;
-        const bodyImportedWrapper = document.body.querySelector(selector);
-        if (bodyImportedWrapper != null && bodyImportedWrapper != undefined)
-          if (bodyImportedWrapper.classList.contains("imported")) {
-            console.log("IMPORTED");
-            return;
+        // remakeScripts(document.head.querySelectorAll("script"));
+        const wrapper = response.querySelectorAll(selector).item(0);
+        // wrapper.innerHTML = document.body.innerHTML;
+        document.querySelectorAll("body > *").forEach(elem => {
+          elem.remove();
+          // const elemCopy = ;
+          if (elem.tagName != "SCRIPT") {
+            wrapper.appendChild(elem.cloneNode(true));
+          } else {
+            const newScript = document.createElement("script");
+            newScript.textContent = elem.textContent;
+            for (let attrIndex = 0; attrIndex < elem.attributes.length; attrIndex++) {
+              const elemAttr = elem.attributes.item(attrIndex);
+              if (elemAttr != null) {
+                newScript.setAttribute(elemAttr.name, elemAttr.value);
+              }
+            }
+            document.body.appendChild(newScript);
           }
-        const headInnerHTML = document.head.innerHTML + response.head.innerHTML;
-        response.head.innerHTML = headInnerHTML;
-        console.log("IMPORTS");
-        wrapper.classList.add("imported");
-        console.log(wrapper);
-        // Opens a new document, writes the document, and finalizes (closes) the document...
+          // TODO DO IF ELSE - TAG = SCRIPT... like in here ->
+        });
+        response.querySelectorAll("body > *").forEach(elem => {
+          elem.remove();
+          if (elem.tagName != "SCRIPT") {
+            // TODO IN HERE
+            document.body.appendChild(elem.cloneNode(true));
+          } else {
+            const newScript = document.createElement("script");
+            newScript.textContent = elem.textContent;
+            for (let attrIndex = 0; attrIndex < elem.attributes.length; attrIndex++) {
+              const elemAttr = elem.attributes.item(attrIndex);
+              if (elemAttr != null) {
+                newScript.setAttribute(elemAttr.name, elemAttr.value);
+              }
+            }
+            document.body.appendChild(newScript);
+          }
+        });
+        response.head.querySelectorAll("*").forEach(elem => {
+          elem.remove();
+          if (elem.tagName != "SCRIPT") {
+            document.head.appendChild(elem.cloneNode(true));
+          } else {
+            const newScript = document.createElement("script");
+            newScript.textContent = elem.textContent;
+            for (let attrIndex = 0; attrIndex < elem.attributes.length; attrIndex++) {
+              const elemAttr = elem.attributes.item(attrIndex);
+              if (elemAttr != null) {
+                newScript.setAttribute(elemAttr.name, elemAttr.value);
+              }
+            }
+            document.head.appendChild(newScript);
+          }
+        });
 
-        document.open();
-        document.write(response.documentElement.innerHTML);
-        document.close();
+        console.log("IMPORTS");
       } else {
         console.error("Request failed.  Returned status of " + xhr.status);
       }
     }
   };
-  document.addEventListener("DOMContentLoaded", () => {
-    // open the request and send it
-    xhr.open("GET", url);
-    xhr.responseType = "document";
-    xhr.send();
-  });
+  // document.addEventListener("DOMContentLoaded", () => {
+  // open the request and send it
+  xhr.responseType = "document";
+  xhr.open("GET", url);
+  xhr.send();
+  // });
 }
 
-export function loadHTML(url, selector) {
+export function loadHTML(url, selector, prefix = "", suffix = "") {
   const xhr = new XMLHttpRequest();
 
   xhr.onload = () => {
@@ -49,12 +87,16 @@ export function loadHTML(url, selector) {
       const wrapper = document.querySelector(selector);
 
       const response = xhr.responseXML;
-
+      response.querySelectorAll("*").forEach(elem => {
+        const srcPath = elem.getAttribute("src");
+        if (srcPath != null && srcPath != "") {
+          elem.src = prefix + srcPath + suffix;
+        }
+      });
       response.querySelectorAll("link").forEach(elem => {
         document.head.appendChild(elem);
-        //   response.body.removeChild(elem);
       });
-      wrapper.innerHTML = response.body.innerHTML;
+      wrapper.innerHTML += response.body.innerHTML;
       markScripts(true);
       response.querySelectorAll("script").forEach(s => {
         const newScript = document.createElement("script");
@@ -68,16 +110,6 @@ export function loadHTML(url, selector) {
         s.remove();
         wrapper.appendChild(newScript);
       });
-
-      //   const docClone = document.documentElement.innerHTML;
-      //     document.open();
-      //     document.write(docClone);
-      //     document.close();
-      //   const DOMupdateEvent = new Event("DOMContentLoaded", {
-      //     bubbles: true,
-      //     cancelable: true,
-      //   });
-      //   document.dispatchEvent(DOMupdateEvent);
     }
   };
 
@@ -87,10 +119,39 @@ export function loadHTML(url, selector) {
   console.log("UPDATING SCRIPTS!!!");
 }
 
+export function changeSources(url, selector = "*", prefix = "", suffix = "") {
+  const xhr = new XMLHttpRequest();
+
+  xhr.onload = () => {
+    if (xhr.readyState == xhr.DONE && xhr.status == 200) {
+      const response = xhr.responseXML;
+      const wrapper = response.querySelector(selector);
+    }
+  };
+
+  xhr.open("GET", url);
+  xhr.responseType = "document";
+  xhr.send();
+}
+
 /***Marks/Removes all current scripts (that have already been ran / loaded) */
 const markScripts = (removeScripts = false) => {
   document.querySelectorAll("script:not([data-executed])").forEach(s => {
     if (removeScripts) s.remove();
     else s.setAttribute("data-executed", "true");
+  });
+};
+
+const remakeScripts = scriptList => {
+  scriptList.forEach(s => {
+    s.setAttribute("data-executed", "true");
+    s.remove();
+    const newScript = document.createElement("script");
+    for (let attrIndex = 0; attrIndex < s.attributes.length; attrIndex++) {
+      if (s.attributes.item(attrIndex) !== null) {
+        newScript.setAttribute(s.attributes.item(attrIndex).name, s.attributes.item(attrIndex).value);
+      }
+    }
+    document.head.appendChild(newScript);
   });
 };

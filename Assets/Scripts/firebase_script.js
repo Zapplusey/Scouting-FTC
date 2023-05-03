@@ -32,14 +32,15 @@ export const db = getFirestore();
 export const dataCollectionPath = ["formData"];
 
 // works, tested
-export async function writeDoc__(collectionName, o_ = {}, id_ = "NONE") {
-  const docRef = await setDoc(doc(db, `${collectionName}/${id}`), o_)
+export async function writeDoc__(collectionNames = [], o_ = {}, id_ = "NONE") {
+  const docRef = await setDoc(doc(db, arrayToPath(collectionNames)), o_)
     .then(() => {
       console.log("Data set successfully");
     })
     .catch(error => {
       console.log("Operation failed; error: " + error);
     });
+  return docRef;
 }
 
 export async function writeDocPath__(collectionNames = [], o_ = {}) {
@@ -102,14 +103,10 @@ export function arrayToPath(arr__) {
 
 // works, tested;
 
-export async function getDoc__(docPathArray) {
+/** returns an array with the doc's id (name)(index:1), and the doc's data (index:1)*/
+export async function getDoc__(docPathArray = []) {
   const docSnap = await getDoc(doc(db, arrayToPath(docPathArray)));
-  if (docSnap.exists()) {
-    console.log("transmitting data");
-    return docSnap.data();
-  } else {
-    console.log("File not found.");
-  }
+  return docSnap.exists() ? docSnap.data() : null;
 }
 
 export async function getDocs__(collectionPathArray = []) {
@@ -134,6 +131,7 @@ export async function getDocsData__(collectionPathArray = []) {
     dataArr_.push(doc.data());
   });
   // console.log(dataArr_);
+  if (dataArr_.length < 1) return null;
   return dataArr_;
 }
 
@@ -218,7 +216,6 @@ const gatherInfo = (isManual = true, lst = []) => {
       if (e.tagName.toLowerCase() == "switch-display") {
         infoObj[dataLoc][i]["selectedIndex"] = e.selectedIndex;
         console.log("adding selected index of display: ", e.selectedIndex);
-        // TODO does this shit work...?
       }
     });
   } else infoObj = inputsToValues(lst);
@@ -231,13 +228,18 @@ const submitValues = eve => {
   // inputs.sort((a,b) => a.index - b.index);
   addListOfData(inputs);
   alert("Form Submitted! טופס הוגש");
-  window.setTimeout(eve => {
+  window.setTimeout(eve2 => {
     location.reload();
   }, 100 * 12);
 };
 
-const submitButton = document.querySelector("button#sub");
-submitButton.addEventListener("click", submitValues);
+console.log("firebasing");
+const submitButton = document.querySelector("button.button.SubButton#sub");
+if (submitButton) {
+  console.log(`submit button: ${submitButton}`);
+  submitButton.addEventListener("click", submitValues);
+  console.log("FOUND BUTTOn");
+} else console.log("HAVEN'T FOUND BUTTON D:");
 
 const addListOfData = lst => {
   addDoc__(["formData"], lst);

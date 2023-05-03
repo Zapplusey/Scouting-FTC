@@ -28,6 +28,50 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: "Libre B";
+  src: url("Fonts/LibreBaskerville-Regular.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Libre B Italic";
+  src: url("Fonts/LibreBaskerville-Italic.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Petit Formal Script";
+  src: url("Fonts/PetitFormalScript-Regular.ttf");
+}
+@font-face {
+  font-family: "Oleo Script";
+  src: url("Fonts/OleoScriptSwashCaps-Regular.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Oleo Script Bold";
+  src: url("Fonts/OleoScriptSwashCaps-Bold.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Aquire Light";
+  src: url("Fonts/AquireLight-YzE0o.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Aquire";
+  src: url("Fonts/Aquire-BW0ox.otf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Welland";
+  src: url("Fonts/Welland-regular.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Kinfolk";
+  src: url("Fonts/Kinfolk.ttf");
+  font-weight: 300;
+}
 @media screen and (min-aspect-ratio: 10/9) {
   :root {
     font-size: 20px;
@@ -109,7 +153,7 @@ body {
 }
 
 div.middle {
-  background-color: hsl(205, 60%, 30%);
+  background-color: hsl(205, 64%, 20%);
 }
 div.middle h1 {
   text-decoration: underline;

@@ -11,6 +11,7 @@ window.addEventListener("online", () => {
   location.reload();
 });
 
-if (textWrapper.getAttribute("data-refreshOffline") == "true") {
-  window.addEventListener("offline", refresh);
-}
+if (textWrapper)
+  if (textWrapper.getAttribute("data-refreshOffline") == "true") {
+    window.addEventListener("offline", refresh);
+  }

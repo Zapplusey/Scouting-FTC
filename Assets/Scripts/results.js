@@ -1,4 +1,4 @@
-import { getDoc__, getDocsData__, deleteDoc__, getDocsDatabase__ } from "./firebase_script.js";
+import { getDocsData__, deleteDoc__, getDocsDatabase__ } from "./firebase_script.js";
 // Declaring variables
 const resultViewer = document.getElementById("result_viewer");
 const defaultDir = ["formData"];
@@ -29,7 +29,6 @@ const calculatePoleScore = obj_ => {
       score += parseInt(pole.value) * scoreDict[pole.label.toLowerCase()];
     });
   });
-  console.log(score);
   return score;
 };
 
@@ -153,7 +152,6 @@ async function updateViewer(collectionPathArray = defaultDir, changeMode = "form
       const listings = [];
       /**Data types of data collections (objs) */
       const listingsTypes = [];
-      console.log(objs[0].generalData);
       for (const property of objs[0].generalData) {
         listings.push(property.label);
         if (property.value == "false" || property.value == "true") listingsTypes.push("boolean");
@@ -234,7 +232,6 @@ async function updateViewer(collectionPathArray = defaultDir, changeMode = "form
       cell.addEventListener("click", eve => {
         const columnID = cell.getAttribute("data-column-id");
         deleteDoc__(["formData", columnID]);
-        console.log("DELETED " + columnID);
         sessionStorage.setItem("DELETED:", columnID);
         // Deleting the represented row
         resultViewer.querySelectorAll("tr").forEach(tableRow => {
