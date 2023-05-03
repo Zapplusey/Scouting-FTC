@@ -79,7 +79,7 @@ export function dispatchUserChangeEvent(name, pos) {
 export function redirectByPosition(minPosition) {
   const userPos = sessionStorage.getItem(userStorageKeys.position);
   if (positionValues[userPos] < positionValues[minPosition] || userPos == null) {
-    window.location.replace("/index.html");
+    window.location.replace("./index.html");
     window.setTimeout(() => alert("You are not permitted to enter this page"), 500);
   }
 }
