@@ -30,46 +30,46 @@
 }
 @font-face {
   font-family: "Libre B";
-  src: url("Fonts/LibreBaskerville-Regular.ttf");
+  src: url("./fonts/LibreBaskerville-Regular.ttf");
   font-weight: 300;
 }
 @font-face {
   font-family: "Libre B Italic";
-  src: url("Fonts/LibreBaskerville-Italic.ttf");
+  src: url("./fonts/LibreBaskerville-Italic.ttf");
   font-weight: 300;
 }
 @font-face {
   font-family: "Petit Formal Script";
-  src: url("Fonts/PetitFormalScript-Regular.ttf");
+  src: url("./fonts/PetitFormalScript-Regular.ttf");
 }
 @font-face {
   font-family: "Oleo Script";
-  src: url("Fonts/OleoScriptSwashCaps-Regular.ttf");
+  src: url("./fonts/OleoScriptSwashCaps-Regular.ttf");
   font-weight: 900;
 }
 @font-face {
   font-family: "Oleo Script Bold";
-  src: url("Fonts/OleoScriptSwashCaps-Bold.ttf");
+  src: url("./fonts/OleoScriptSwashCaps-Bold.ttf");
   font-weight: 900;
 }
 @font-face {
   font-family: "Aquire Light";
-  src: url("Fonts/AquireLight-YzE0o.otf");
+  src: url("./fonts/AquireLight-YzE0o.otf");
   font-weight: 200;
 }
 @font-face {
   font-family: "Aquire";
-  src: url("Fonts/Aquire-BW0ox.otf");
+  src: url("./fonts/Aquire-BW0ox.otf");
   font-weight: 300;
 }
 @font-face {
   font-family: "Welland";
-  src: url("Fonts/Welland-regular.otf");
+  src: url("./fonts/Welland-regular.otf");
   font-weight: 200;
 }
 @font-face {
   font-family: "Kinfolk";
-  src: url("Fonts/Kinfolk.ttf");
+  src: url("./fonts/Kinfolk.ttf");
   font-weight: 300;
 }
 @media screen and (min-aspect-ratio: 10/9) {
@@ -165,6 +165,12 @@ body * {
 .template-top div.logo-section h2 {
   font-family: "Libre B";
 }
+@media only screen and (max-aspect-ratio: 16/9) {
+  .template-top div.logo-section h1,
+  .template-top div.logo-section h2 {
+    font-size: 1em;
+  }
+}
 .template-top div.interface {
   display: flex;
   flex-direction: row-reverse;
@@ -220,6 +226,7 @@ body * {
   box-shadow: 0 -0.3em 0.2em 0 black;
 }
 .template-top div.interface #profile-menu div.login-main-menu {
+  translate: -10% 0;
   position: absolute;
   height: -moz-fit-content;
   height: fit-content;
@@ -247,6 +254,7 @@ body * {
   background-color: hsl(205, 60%, 20%);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
+  box-shadow: 0 0 0.6em 0 rgba(0, 0, 0, 0.6) inset;
 }
 .template-top div.interface #profile-menu div.login-main-menu div.login-page * {
   opacity: 0.93;
@@ -353,12 +361,22 @@ body * {
   translate: 0 -1000%;
   rotate: calc(var(--i) * 45deg);
 }
+@media only screen and (max-aspect-ratio: 1.2222222222) {
+  .template-top div.interface .menu-wrapper div.wrapper.links.page-links > .wrapper-exit > .particle {
+    translate: -120% 0;
+  }
+}
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links:hover:not(.active) .particle {
   box-shadow: 0 0 0.2em 0 hsl(205, 90%, 80%);
 }
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active:not(:has(.particle a:hover)):hover > .particle {
   transform: translateX(calc(3.75em * var(--i)));
   box-shadow: 0 0 0.2em 0 hsl(205, 90%, 80%);
+}
+@media only screen and (max-aspect-ratio: 1.2222222222) {
+  .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active:not(:has(.particle a:hover)):hover > .particle {
+    transform: translateY(calc(1.5em * var(--i) / 1.2 + 0.5em)) translateX(-3em);
+  }
 }
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active:not(:has(.particle a:hover)):hover > .wrapper-exit > .particle {
   box-shadow: 0 0 0.2em 0 hsl(205, 90%, 80%);
@@ -367,6 +385,11 @@ body * {
   transition: box-shadow 225ms 100ms, translate 325ms ease 250ms, transform 300ms, width 200ms, padding 200ms;
   transform: translateX(calc(4.125em * var(--i)));
   translate: 0 calc(-0.5625em * var(--i));
+}
+@media only screen and (max-aspect-ratio: 1.2222222222) {
+  .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle {
+    transform: translateY(calc(1.5em * var(--i) + 0.5em)) translateX(-3em);
+  }
 }
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .particle:has(:hover) {
   padding: 0em 0.2727272727em;
@@ -384,6 +407,11 @@ body * {
 .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .wrapper-exit > .particle {
   transition: translate 300ms 100ms, box-shadow 300ms;
   translate: 0 50%;
+}
+@media only screen and (max-aspect-ratio: 1.2222222222) {
+  .template-top div.interface .menu-wrapper div.wrapper.links.page-links.active > .wrapper-exit > .particle {
+    translate: 0 0;
+  }
 }
 .template-top div.interface .menu-wrapper .menu-effect-wrapper {
   transition: all 300ms;

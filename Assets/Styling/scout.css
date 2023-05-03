@@ -30,46 +30,46 @@
 }
 @font-face {
   font-family: "Libre B";
-  src: url("Fonts/LibreBaskerville-Regular.ttf");
+  src: url("./fonts/LibreBaskerville-Regular.ttf");
   font-weight: 300;
 }
 @font-face {
   font-family: "Libre B Italic";
-  src: url("Fonts/LibreBaskerville-Italic.ttf");
+  src: url("./fonts/LibreBaskerville-Italic.ttf");
   font-weight: 300;
 }
 @font-face {
   font-family: "Petit Formal Script";
-  src: url("Fonts/PetitFormalScript-Regular.ttf");
+  src: url("./fonts/PetitFormalScript-Regular.ttf");
 }
 @font-face {
   font-family: "Oleo Script";
-  src: url("Fonts/OleoScriptSwashCaps-Regular.ttf");
+  src: url("./fonts/OleoScriptSwashCaps-Regular.ttf");
   font-weight: 900;
 }
 @font-face {
   font-family: "Oleo Script Bold";
-  src: url("Fonts/OleoScriptSwashCaps-Bold.ttf");
+  src: url("./fonts/OleoScriptSwashCaps-Bold.ttf");
   font-weight: 900;
 }
 @font-face {
   font-family: "Aquire Light";
-  src: url("Fonts/AquireLight-YzE0o.otf");
+  src: url("./fonts/AquireLight-YzE0o.otf");
   font-weight: 200;
 }
 @font-face {
   font-family: "Aquire";
-  src: url("Fonts/Aquire-BW0ox.otf");
+  src: url("./fonts/Aquire-BW0ox.otf");
   font-weight: 300;
 }
 @font-face {
   font-family: "Welland";
-  src: url("Fonts/Welland-regular.otf");
+  src: url("./fonts/Welland-regular.otf");
   font-weight: 200;
 }
 @font-face {
   font-family: "Kinfolk";
-  src: url("Fonts/Kinfolk.ttf");
+  src: url("./fonts/Kinfolk.ttf");
   font-weight: 300;
 }
 @media screen and (min-aspect-ratio: 10/9) {
