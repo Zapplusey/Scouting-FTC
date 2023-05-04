@@ -147,6 +147,7 @@ body * {
   width: 100%;
   align-self: self-end center;
   z-index: 3;
+  margin: 0;
   margin-bottom: 2em;
   padding: 1.5em 0;
   background-color: hsla(205, 53%, 25%, 0.8);
@@ -154,21 +155,40 @@ body * {
           backdrop-filter: blur(9px);
   position: relative;
 }
+.template-top * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
 .template-top div.logo-section {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-content: center;
   align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  transform: none;
 }
 .template-top div.logo-section h1,
 .template-top div.logo-section h2 {
   font-family: "Libre B";
 }
-@media only screen and (max-aspect-ratio: 16/9) {
-  .template-top div.logo-section h1,
-  .template-top div.logo-section h2 {
-    font-size: 1em;
+@media only screen and (max-aspect-ratio: 1.2222222222) {
+  .template-top div.logo-section {
+    font-size: 0.9em;
+    transform: translateY(2em);
+    position: absolute;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-content: center;
+    align-items: center;
+  }
+  .template-top div.logo-section * {
+    color: hsl(205, 50%, 43%);
+    align-self: baseline baseline;
   }
 }
 .template-top div.interface {

@@ -15,23 +15,41 @@
     // transform: translateY(-200px);
     align-self: self-end center;
     z-index: 3;
+    margin: 0;
     margin-bottom: 2em;
     padding: 1.5em 0;
     background-color: getCC(5, 2, 0.8, 0, 3, 5);
     backdrop-filter: blur(9px);
     position: relative;
 
+    * {
+        user-select: none;
+    }
 
     div.logo-section {
         @include flexing(row);
+        width: fit-content;
+        transform: none;
 
         h1,
         h2 {
             // font-family: "Petit Formal Script";
             font-family: "Libre B";
 
-            @media only screen and (max-aspect-ratio: 16/9) {
-                font-size: 1em;
+
+        }
+
+        @media only screen and (max-aspect-ratio: $landscape-ratio) {
+            font-size: 0.9em;
+            transform: translateY(2em);
+            position: absolute;
+            width: 90%;
+            @include flexing(row, start);
+
+            * {
+                color: getCC(5, 4, 1, 0, 0, 3);
+                align-self: baseline baseline;
+                // text-shadow: 0 0 0.2em getCC(5, 5);
             }
         }
     }
