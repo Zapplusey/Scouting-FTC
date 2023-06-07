@@ -125,6 +125,10 @@ body * {
   box-shadow: 0em 0em 0.5vh hsl(205, 50%, 50%) inset;
 }
 
+.invisible {
+  display: none !important;
+}
+
 p,
 h1,
 h2,
@@ -143,7 +147,7 @@ div.content {
   align-items: center;
 }
 div.content p {
-  margin: 0 10vw;
+  margin: 3vh 10vw;
   padding: 0.4em;
   text-align: center;
   border-radius: 1em;
@@ -231,6 +235,12 @@ div.dashboard div.sign-in-menu button:hover {
   background-color: hsl(205, 71%, 43%);
   box-shadow: 0 0 0.7em 0 hsla(205, 12%, 12%, 0.9);
 }
+div.dashboard div.sign-in-menu div.issue {
+  font-size: 85%;
+  word-wrap: break-word;
+  white-space: break-spaces;
+  max-width: 7em;
+}
 div.dashboard div.message-menu {
   font-size: 155%;
   color: hsl(205, 70%, 80%);
@@ -253,16 +263,18 @@ div.dashboard div.message-menu h2 {
 div.dashboard div.message-menu div.messages-container {
   max-width: 11em;
   height: 14em;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scroll-behavior: smooth;
   padding: 0.3em;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-content: center;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   background-color: none;
 }
 div.dashboard div.message-menu div.messages-container .message {
+  display: inline-block;
+  position: relative;
   background-color: hsl(205, 50%, 30%);
   padding: 0.2em;
   border-radius: 0.2em;
@@ -289,4 +301,24 @@ div.dashboard div.message-menu div.messages-container .message .action:hover {
   color: hsl(205, 100%, 90%);
   font-size: 106%;
   text-shadow: 0 0 0.2em hsla(205, 70%, 70%, 0.8), 0 0 0.4em hsla(205, 0%, 0%, 0.5);
+}
+div.dashboard button.panel.button {
+  margin: 0.3em;
+  border: none;
+  padding: 0.4em;
+  font-size: 1.1em;
+  font-family: "Libre B";
+  font-weight: 500;
+  color: hsl(205, 70%, 80%);
+  background-color: hsl(205, 60%, 30%);
+  border-radius: 0.3em;
+  transition: all 300ms;
+  box-shadow: 0 0 0.0001em 0 hsla(205, 12%, 12%, 0.5);
+  cursor: pointer;
+}
+div.dashboard button.panel.button:hover {
+  scale: 1.02;
+  color: hsl(205, 90%, 90%);
+  background-color: hsl(205, 71%, 43%);
+  box-shadow: 0 0 0.7em 0 hsla(205, 12%, 12%, 0.9);
 }

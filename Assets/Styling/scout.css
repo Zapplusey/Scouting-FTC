@@ -125,6 +125,10 @@ body * {
   box-shadow: 0em 0em 0.5vh hsl(205, 50%, 50%) inset;
 }
 
+.invisible {
+  display: none !important;
+}
+
 p,
 h1,
 h2,

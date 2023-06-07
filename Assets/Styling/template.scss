@@ -1,7 +1,8 @@
 @import "./custom_scss";
 
 .template-content {
-    width: 100vw;
+    max-width: 100vw;
+    width: fit-content;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -35,7 +36,7 @@
         h2 {
             // font-family: "Petit Formal Script";
             font-family: "Libre B";
-
+            color: getCC(7, 8);
 
         }
 
@@ -46,11 +47,14 @@
             width: 90%;
             @include flexing(row, start);
 
-            * {
+            *,
+            h2,
+            h1 {
                 color: getCC(5, 4, 1, 0, 0, 3);
                 align-self: baseline baseline;
                 // text-shadow: 0 0 0.2em getCC(5, 5);
             }
+
         }
     }
 
@@ -175,6 +179,35 @@
                                 background-color: getCC(7, 4, 1, 0, 1, 3);
                                 box-shadow: 0 0 0.7em 0 getCC(1, 1, 0.9, 0, 2, 2);
                             }
+                        }
+                    }
+
+                    .note-text {
+                        .logout {
+                            // -webkit-text-fill-color: getCC(6, 6);
+                            overflow: hidden;
+                            width: fit-content;
+                            height: fit-content;
+                            display: inline-block;
+
+
+                            &::after {
+                                content: "";
+                                font-size: 1em;
+                                inset: 0;
+                                position: absolute;
+                                background-color: getCC(5, 4, 0.8);
+                                border-radius: 0.3em;
+                                mix-blend-mode: color-dodge;
+                                transform: translateY(101%);
+                                transition: 0.3s;
+                                z-index: 3;
+                            }
+
+                            &:hover::after {
+                                transform: translateY(0);
+                            }
+
                         }
                     }
                 }
@@ -365,6 +398,21 @@
         }
 
 
+    }
+}
+
+.template-footer {
+    width: 100%;
+    height: 6em;
+    @include flexing(row);
+    align-items: flex-start;
+    background: getCC(5, 3);
+    margin-top: 4em;
+    box-shadow: 0 0 1em 0.2em getCC(6, 4);
+
+    #clock {
+        color: getCC(7, 8);
+        font-size: 2rem;
     }
 }
 

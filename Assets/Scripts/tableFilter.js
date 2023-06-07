@@ -43,7 +43,7 @@ const tableFilterExecute = () => {
     const operators = [">", "<"]; // Filter input operators (to detected different values...)
     // Filter input callback
     filter.addEventListener("input", eve_ => {
-      const filterText = filter.value.trim();
+      const filterText = filter.value.trim().toLocaleLowerCase();
       const colonIndex = filterText.indexOf(":", 1);
 
       const attrName = filterText.substring(0, colonIndex).trim().toLocaleLowerCase();

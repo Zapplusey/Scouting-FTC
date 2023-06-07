@@ -223,7 +223,7 @@ const gatherInfo = (isManual = true, lst = []) => {
   return infoObj;
 };
 
-const submitValues = eve => {
+function submitValues() {
   const inputs = gatherInfo();
   // inputs.sort((a,b) => a.index - b.index);
   addListOfData(inputs);
@@ -231,15 +231,18 @@ const submitValues = eve => {
   window.setTimeout(eve2 => {
     location.reload();
   }, 100 * 12);
-};
+}
 
+window.submitValues = submitValues;
 console.log("firebasing");
-const submitButton = document.querySelector("button.button.SubButton#sub");
-if (submitButton) {
-  console.log(`submit button: ${submitButton}`);
-  submitButton.addEventListener("click", submitValues);
-  console.log("FOUND BUTTOn");
-} else console.log("HAVEN'T FOUND BUTTON D:");
+const submitButton = document.querySelector("button#sub.SubButton");
+// if (submitButton) {
+//   console.log(`submit button: ${submitButton}`);
+//   window.addEventListener("click", eve => {
+//     if (eve.target.matches("button#sub.SubButton")) submitValues();
+//   });
+//   console.log("FOUND BUTTOn");
+// } else console.log("HAVEN'T FOUND BUTTON D:");
 
 const addListOfData = lst => {
   addDoc__(["formData"], lst);

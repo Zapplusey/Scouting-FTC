@@ -4,6 +4,8 @@
 @import "./fonts_css";
 
 $main-hue: 205deg; // previously 205deg
+$opposite-hue: (
+  $main-hue + 180) % 360;
 $landscape-ratio: 11/9;
 
 
@@ -46,8 +48,14 @@ $saturation-values: (
   $opacity: 1,
   $adjust-hue: 0deg,
   $saturation-add: 0,
-  $lightness-add: 0) {
-  @return hsla($main-hue + $adjust-hue,
+  $lightness-add: 0, $opp-hue: false) {
+  $selected-hue: $main-hue;
+
+  @if($opp-hue) {
+    $selected-hue: $opposite-hue;
+  }
+
+  @return hsla($selected-hue + $adjust-hue,
     (map.get($saturation-values, $saturation) + $saturation-add) * 1%,
     (map.get($lightness-values, $lightness) + $lightness-add) * 1%,
     $opacity );
@@ -152,4 +160,8 @@ body {
 ::-webkit-scrollbar-corner {
   background: none;
   box-shadow: 0em 0em 0.5vh getCC(5, 5) inset;
+}
+
+.invisible {
+  display: none !important;
 }

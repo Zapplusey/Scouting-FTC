@@ -31,16 +31,24 @@
             <h2>sign in</h2>
             <label for="user-name">Username</label>
             <input name="username" type="text" class="input username" />
-            <label for="password">password</label>
+            <label for="password">Password</label>
             <input name="password" type="text" class="input password" />
-            <label for="">position</label>
+            <label for="position">Position</label>
             <switch-display titles="scouter;observer;manager" class="input position"></switch-display>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="input email" />
+
             <button class="btn submit">Submit</button>
+            <div class="issue">
+
+            </div>
         </div>
         <div class="message-menu">
             <h2>MESSAGES</h2>
             <br>
             <div class="messages-container"></div>
+            <br>
+            <button class="button panel" onclick="window.open('./panel.html', '_self')">PANEL</button>
         </div>
     </div>
 </body>

@@ -125,8 +125,14 @@ body * {
   box-shadow: 0em 0em 0.5vh hsl(205, 50%, 50%) inset;
 }
 
+.invisible {
+  display: none !important;
+}
+
 .template-content {
-  width: 100vw;
+  max-width: 100vw;
+  width: -moz-fit-content;
+  width: fit-content;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -173,6 +179,7 @@ body * {
 .template-top div.logo-section h1,
 .template-top div.logo-section h2 {
   font-family: "Libre B";
+  color: hsl(205, 70%, 80%);
 }
 @media only screen and (max-aspect-ratio: 1.2222222222) {
   .template-top div.logo-section {
@@ -186,7 +193,9 @@ body * {
     align-content: center;
     align-items: center;
   }
-  .template-top div.logo-section * {
+  .template-top div.logo-section *,
+  .template-top div.logo-section h2,
+  .template-top div.logo-section h1 {
     color: hsl(205, 50%, 43%);
     align-self: baseline baseline;
   }
@@ -315,6 +324,29 @@ body * {
   color: hsl(205, 90%, 90%);
   background-color: hsl(205, 71%, 43%);
   box-shadow: 0 0 0.7em 0 hsla(205, 12%, 12%, 0.9);
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page .note-text .logout {
+  overflow: hidden;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: inline-block;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page .note-text .logout::after {
+  content: "";
+  font-size: 1em;
+  inset: 0;
+  position: absolute;
+  background-color: hsla(205, 50%, 40%, 0.8);
+  border-radius: 0.3em;
+  mix-blend-mode: color-dodge;
+  transform: translateY(101%);
+  transition: 0.3s;
+  z-index: 3;
+}
+.template-top div.interface #profile-menu div.login-main-menu div.login-page .note-text .logout:hover::after {
+  transform: translateY(0);
 }
 .template-top div.interface .menu-wrapper {
   display: block;
@@ -456,4 +488,22 @@ body * {
 .template-top div.interface .menu-wrapper:has(.active) .menu-effect-wrapper {
   opacity: 1;
   transform: translateY(1em);
+}
+
+.template-footer {
+  width: 100%;
+  height: 6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  align-items: flex-start;
+  background: hsl(205, 50%, 30%);
+  margin-top: 4em;
+  box-shadow: 0 0 1em 0.2em hsl(205, 60%, 40%);
+}
+.template-footer #clock {
+  color: hsl(205, 70%, 80%);
+  font-size: 2rem;
 }

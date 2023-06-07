@@ -3,8 +3,8 @@ import { getDocsDatabase__, getDoc__, writeDoc__ } from "./firebase_script.js";
 export const userStorageKeys = { name: "currentUser", password: "userPass", position: "userPos" };
 export const positionValues = { guest: 0, scouter: 1, observer: 2, manager: 3 };
 export class UserForm {
-  constructor(_username = "", _password = "", _position = "") {
-    this.fields = { username: _username, password: _password, position: _position };
+  constructor(_username = "", _password = "", _position = "", _email = "") {
+    this.fields = { username: _username, password: _password, position: _position, email: _email };
 
     let allValidated = true;
     // Object.values(this.fields).forEach(val => {
@@ -25,7 +25,7 @@ export class UserForm {
     if (isPassCorrect && sessionStorage.getItem(userStorageKeys.name) == null) {
       sessionStorage.setItem(userStorageKeys.name, user_.fields.username);
       sessionStorage.setItem(userStorageKeys.position, userFile.position);
-      dispatchUserChangeEvent(user_.fields.username, user_.fields.position);
+      dispatchUserChangeEvent(user_.fields.username, userFile.position);
     }
     return [isNameCorrect, isPassCorrect];
   }
@@ -51,6 +51,7 @@ export class UserForm {
         name: user_.fields.username,
         password: user_.fields.password,
         position: user_.fields.position,
+        email: user_.fields.email,
       });
     }
   }
@@ -79,7 +80,7 @@ export function dispatchUserChangeEvent(name, pos) {
 export function redirectByPosition(minPosition) {
   const userPos = sessionStorage.getItem(userStorageKeys.position);
   if (positionValues[userPos] < positionValues[minPosition] || userPos == null) {
+    sessionStorage.setItem("displayAlert", "true");
     window.location.replace("./index.html");
-    window.setTimeout(() => alert("You are not permitted to enter this page"), 500);
   }
 }

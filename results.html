@@ -23,6 +23,9 @@
     <script type="module">
         import { redirectByPosition } from "./Assets/Scripts/userform.js";
         redirectByPosition("observer");
+        window.addEventListener("userChange", () => {
+            redirectByPosition("observer")
+        });
     </script>
 
 </head>

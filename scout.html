@@ -11,6 +11,9 @@
     <script type="module">
         import { redirectByPosition } from "./Assets/Scripts/userform.js";
         redirectByPosition("scouter");
+        window.addEventListener("userChange", () => {
+            redirectByPosition("scouter");
+        });
     </script>
     <script type="module">
         import { loadContent } from "./Assets/Scripts/loader.js";
@@ -158,7 +161,7 @@
             <input class="info input" data-tag="Comments" placeholder="הערות" type="text" data-hebrew-tag="הערות">
         </form>
         <div class="buttons-wrapper">
-            <button class="button SubButton" id="sub">Submit📩🔁</button>
+            <button class="button SubButton" id="sub" onclick="submitValues()">Submit📩🔁</button>
             <button class="link" onclick="window.open('./results.html','_self')">See Results</button>
         </div>
     </div>

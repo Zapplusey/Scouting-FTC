@@ -29,8 +29,8 @@ export function loadContent(url, selector) {
             }
             document.body.appendChild(newScript);
           }
-          // TODO DO IF ELSE - TAG = SCRIPT... like in here ->
         });
+
         response.querySelectorAll("body > *").forEach(elem => {
           elem.remove();
           if (elem.tagName != "SCRIPT") {

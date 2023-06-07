@@ -125,6 +125,10 @@ body * {
   box-shadow: 0em 0em 0.5vh hsl(205, 50%, 50%) inset;
 }
 
+.invisible {
+  display: none !important;
+}
+
 body {
   justify-content: start;
   gap: 5vh;
@@ -358,7 +362,7 @@ table {
   display: inline-block;
   width: -moz-fit-content;
   width: fit-content;
-  max-width: 95vw;
+  max-width: 80vw;
   border-collapse: collapse;
   text-align: center;
 }
@@ -370,6 +374,7 @@ table td {
   color: hsl(205, 100%, 90%);
   word-break: keep-all;
   line-break: strict;
+  position: relative;
 }
 table td.delete {
   color: hsl(45, 80%, 60%);
@@ -378,6 +383,12 @@ table td.delete {
 }
 table td.delete:hover {
   color: hsl(10, 80%, 50%);
+}
+table td:first-child {
+  background-color: hsl(205, 50%, 30%);
+  position: sticky;
+  left: 0;
+  z-index: 1;
 }
 
 table.scroll-y {
@@ -392,6 +403,11 @@ table.scroll-x {
 
 tr {
   border: 0.5vh solid hsl(205, 100%, 80%);
+}
+
+tr,
+td {
+  max-height: 0.3em;
 }
 
 div.menu {

@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "Varela Round";
+  src: url("./fonts/VarelaRound-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand";
+  src: url("./fonts/Quicksand-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-light";
+  src: url("./fonts/Quicksand-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-regular";
+  src: url("./fonts/Quicksand-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuickSand-semibold";
+  src: url("./fonts/Quicksand-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Libre B";
+  src: url("./fonts/LibreBaskerville-Regular.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Libre B Italic";
+  src: url("./fonts/LibreBaskerville-Italic.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Petit Formal Script";
+  src: url("./fonts/PetitFormalScript-Regular.ttf");
+}
+@font-face {
+  font-family: "Oleo Script";
+  src: url("./fonts/OleoScriptSwashCaps-Regular.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Oleo Script Bold";
+  src: url("./fonts/OleoScriptSwashCaps-Bold.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Aquire Light";
+  src: url("./fonts/AquireLight-YzE0o.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Aquire";
+  src: url("./fonts/Aquire-BW0ox.otf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Welland";
+  src: url("./fonts/Welland-regular.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Kinfolk";
+  src: url("./fonts/Kinfolk.ttf");
+  font-weight: 300;
+}
+@media screen and (min-aspect-ratio: 10/9) {
+  :root {
+    font-size: 20px;
+  }
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(205, 60%, 14%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+body * {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "QuickSand";
+}
+
+.hebrew,
+.hebrew * {
+  font-family: "Varela Round";
+}
+
+::-webkit-scrollbar {
+  width: initial;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(-90deg, hsl(205, 100%, 20%) 0%, hsl(205, 100%, 30%) 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(205, 80%, 60%);
+}
+
+::-webkit-scrollbar-corner {
+  background: none;
+  box-shadow: 0em 0em 0.5vh hsl(205, 50%, 50%) inset;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.user-table.header {
+  color: hsl(205, 60%, 70%);
+  font-size: 1.9rem;
+  margin: 0.3em;
+}
+
+.filter-wrapper {
+  font-size: 1.6rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  -moz-column-gap: 0.4em;
+       column-gap: 0.4em;
+  color: hsl(205, 70%, 70%);
+}
+.filter-wrapper input {
+  outline: none;
+  border-radius: 0.8em;
+  padding: 0.3em;
+  background-color: hsl(205, 60%, 30%);
+  color: hsl(205, 80%, 80%);
+}
+
+#user-table {
+  padding: 1em;
+  background-color: hsl(205, 40%, 30%);
+  border-radius: 0.4em;
+  min-height: 10em;
+  max-height: 14em;
+  font-size: 1.27rem;
+  color: white;
+  font-family: "Petit Formal Script";
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 0.2em;
+  overflow-y: scroll;
+  max-width: 82vw;
+  box-shadow: 0 0 0.7em 0 hsla(205, 30%, 10%, 0.8) inset;
+}
+#user-table .row {
+  text-align: center;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2.3fr 1fr;
+  height: -moz-fit-content;
+  height: fit-content;
+  -moz-column-gap: 0.3em;
+       column-gap: 0.3em;
+}
+#user-table .row * {
+  flex: 1;
+  padding: 0.1em;
+  border: 0.1em solid hsla(205, 100%, 100%, 0.3);
+  max-height: none;
+  word-wrap: break-word;
+  border-radius: 0.2em;
+}
+#user-table .row.headers {
+  background-color: hsl(205, 30%, 40%);
+  padding: 0.3em;
+  position: sticky;
+  top: 0;
+  opacity: 1;
+  z-index: 1;
+}
+#user-table .row.headers * {
+  border: none;
+}
+#user-table::-webkit-scrollbar-thumb {
+  background-color: hsl(205, 50%, 40%);
+}
+#user-table::-webkit-scrollbar-track {
+  background: hsl(205, 50%, 30%);
+}
