@@ -12,3 +12,5 @@ export async function getIP() {
 export async function isIP(ip = "") {
   return getIP() == ip;
 }
+
+// ! NOT IN CURRENT USE

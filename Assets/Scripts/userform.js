@@ -1,7 +1,8 @@
-import { getDocsDatabase__, getDoc__, writeDoc__ } from "./firebase_script.js";
+import { getDocsDatabase__, getDoc__, writeDoc__, deleteDoc__ } from "./firebase_script.js";
 
 export const userStorageKeys = { name: "currentUser", password: "userPass", position: "userPos" };
 export const positionValues = { guest: 0, scouter: 1, observer: 2, manager: 3 };
+export const valuesPosition = { 0: "guest", 1: "scouter", 2: "observer", 3: "manager" };
 export class UserForm {
   constructor(_username = "", _password = "", _position = "", _email = "") {
     this.fields = { username: _username, password: _password, position: _position, email: _email };
@@ -82,5 +83,13 @@ export function redirectByPosition(minPosition) {
   if (positionValues[userPos] < positionValues[minPosition] || userPos == null) {
     sessionStorage.setItem("displayAlert", "true");
     window.location.replace("./index.html");
+  }
+}
+
+export function deleteUser(username = null) {
+  if (username != null && username.trim() != "") {
+    deleteDoc__(["accounts", username]);
+  } else {
+    console.log("Username is blank or null!");
   }
 }

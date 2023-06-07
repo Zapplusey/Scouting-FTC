@@ -32,7 +32,7 @@ export const db = getFirestore();
 export const dataCollectionPath = ["formData"];
 
 // works, tested
-export async function writeDoc__(collectionNames = [], o_ = {}, id_ = "NONE") {
+export async function writeDoc__(collectionNames = [], o_ = {}) {
   const docRef = await setDoc(doc(db, arrayToPath(collectionNames)), o_)
     .then(() => {
       console.log("Data set successfully");

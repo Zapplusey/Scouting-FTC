@@ -130,9 +130,13 @@ body * {
 }
 
 .user-table.header {
-  color: hsl(205, 60%, 70%);
+  color: hsl(205, 70%, 80%);
   font-size: 1.9rem;
   margin: 0.3em;
+  text-shadow: 0 0 0.5em hsl(205, 60%, 50%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .filter-wrapper {
@@ -144,11 +148,13 @@ body * {
   color: hsl(205, 70%, 70%);
 }
 .filter-wrapper input {
+  font-size: 0.75em;
   outline: none;
   border-radius: 0.8em;
   padding: 0.3em;
   background-color: hsl(205, 60%, 30%);
   color: hsl(205, 80%, 80%);
+  border: none;
 }
 
 #user-table {
@@ -185,6 +191,16 @@ body * {
   word-wrap: break-word;
   border-radius: 0.2em;
 }
+#user-table .row *.position {
+  cursor: pointer;
+  transition: 300ms;
+}
+#user-table .row *.position:hover {
+  color: hsl(205, 40%, 80%);
+}
+#user-table .row.filtered {
+  display: none !important;
+}
 #user-table .row.headers {
   background-color: hsl(205, 30%, 40%);
   padding: 0.3em;
@@ -196,9 +212,54 @@ body * {
 #user-table .row.headers * {
   border: none;
 }
+#user-table .row .delete.button {
+  transition: 250ms;
+  cursor: pointer;
+  color: hsl(30, 90%, 70%);
+}
+#user-table .row .delete.button:hover {
+  color: hsl(5, 90%, 60%);
+}
 #user-table::-webkit-scrollbar-thumb {
   background-color: hsl(205, 50%, 40%);
 }
 #user-table::-webkit-scrollbar-track {
   background: hsl(205, 50%, 30%);
+}
+
+#changePos {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.5em;
+  position: fixed;
+  top: 40vh;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+#changePos .hider {
+  pointer-events: all;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  gap: 0.5em;
+  background: hsl(205, 40%, 40%);
+  padding: 1em;
+  color: hsl(205, 80%, 90%);
+  border-radius: 0.7em;
+  box-shadow: 0 0 0.4em 0 black;
+  transition: transform 300ms;
+  transform: translateY(-150%);
+  display: flex;
+}
+#changePos .hider *.button {
+  cursor: pointer;
+}
+#changePos.appear .hider {
+  transform: translateY(0%);
 }
