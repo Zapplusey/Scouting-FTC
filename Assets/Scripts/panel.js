@@ -35,7 +35,9 @@ const updateUserTable = async collectionPathArray => {
     ["name", "password", "position", "email"].forEach(k => {
       resultViewerHTML += `<div class="item ${k}" data-username="${o_["name"]}">${o_[k]}</div>`;
     });
-    resultViewerHTML += `<div class="item button delete" data-username="${o_["name"]}">DELETE</div>`;
+    resultViewerHTML += `<div class="item button delete" data-username="${o_["name"]}" data-row-pos="${
+      i + 1
+    }">DELETE</div>`;
     resultViewerHTML = resultViewerHTML += `</div>`;
   });
   resultViewer.innerHTML = headersHTML + resultViewerHTML;
@@ -45,6 +47,12 @@ const updateUserTable = async collectionPathArray => {
     deleteButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         let username = btn.getAttribute("data-username");
+        console.log(username);
+        const removedRow = resultViewer.querySelectorAll(".row").item(parseInt(btn.getAttribute("data-row-pos")));
+        removedRow.classList.add("removed");
+        window.setTimeout(() => {
+          removedRow.remove();
+        }, 400);
         deleteUser(username);
       });
     });

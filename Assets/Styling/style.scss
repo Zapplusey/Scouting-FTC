@@ -143,11 +143,8 @@ div.dashboard {
             overflow-y: auto;
             scroll-behavior: smooth;
             padding: 0.3em;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            background-color: none;
+            display: grid;
+            grid-template-rows: 1fr;
 
             .message {
                 display: inline-block;

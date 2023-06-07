@@ -182,6 +182,7 @@ body * {
   height: fit-content;
   -moz-column-gap: 0.3em;
        column-gap: 0.3em;
+  transition: opacity 300ms 60ms, transform 300ms;
 }
 #user-table .row * {
   flex: 1;
@@ -211,6 +212,10 @@ body * {
 }
 #user-table .row.headers * {
   border: none;
+}
+#user-table .row.removed {
+  transform: translateY(90%);
+  opacity: 0;
 }
 #user-table .row .delete.button {
   transition: 250ms;
