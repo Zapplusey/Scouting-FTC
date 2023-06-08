@@ -19,6 +19,11 @@ div.content {
         border-radius: 1em;
         @include glass();
 
+        .small {
+            font-size: 80%;
+            color: getCC(7, 6);
+        }
+
         // &::first-letter {
         //     border: 0.2em solid getCC(7, 7, 0.4);
         //     border-style: double;

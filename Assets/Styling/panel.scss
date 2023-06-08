@@ -19,11 +19,15 @@
     input {
         font-size: 0.75em;
         outline: none;
-        border-radius: 0.8em;
+        border-radius: 0.2em;
         padding: 0.3em;
-        background-color: getCC(6, 3);
+        background-color: getCC(6, 2);
         color: getCC(8, 8);
-        border: none;
+        border: 0.1em solid getCC(7, 3);
+
+        &::placeholder {
+            color: getCC(6, 4, 1, -20);
+        }
     }
 
 

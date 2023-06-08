@@ -157,6 +157,10 @@ div.content p {
   border: 1px solid hsla(205, 10%, 100%, 0.18);
   box-shadow: 0 7.9998144358px 32.0000000005px 0 hsla(205, 10%, 10%, 0.37);
 }
+div.content p .small {
+  font-size: 80%;
+  color: hsl(205, 70%, 60%);
+}
 div.content p {
   font-size: xx-large;
 }
