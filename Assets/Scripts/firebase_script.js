@@ -12,6 +12,7 @@ import {
   getDocs,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { userStorageKeys } from "./userform.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -190,7 +191,7 @@ const inputsToValues = lst => {
   console.log(values);
   return { properties: values };
 };
-const gatherInfo = (isManual = true, lst = []) => {
+const gatherInfo = (isManual = true, lst = [], addUserName = false) => {
   let infoObj = {};
   if (isManual) {
     const conesPoles = document.querySelectorAll("form .pole-display-wrapper");
@@ -208,8 +209,16 @@ const gatherInfo = (isManual = true, lst = []) => {
     const dataElements = document.querySelectorAll("form > .info.input");
     const dataLoc = "generalData";
     infoObj[dataLoc] = [];
+    let firstIndex = 0;
+    if (addUserName) {
+      infoObj[dataLoc][0] = {
+        label: "scouter's name",
+        value: sessionStorage.getItem(userStorageKeys.name),
+      };
+      firstIndex++;
+    }
     dataElements.forEach((e, i) => {
-      infoObj[dataLoc][i] = {
+      infoObj[dataLoc][i + firstIndex] = {
         label: e.getAttribute("data-tag"),
         value: e.value,
       };
@@ -224,7 +233,7 @@ const gatherInfo = (isManual = true, lst = []) => {
 };
 
 function submitValues() {
-  const inputs = gatherInfo();
+  const inputs = gatherInfo(true, [], true);
   // inputs.sort((a,b) => a.index - b.index);
   addListOfData(inputs);
   alert("Form Submitted! טופס הוגש");
