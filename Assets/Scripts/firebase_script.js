@@ -13,23 +13,13 @@ import {
   addDoc,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { userStorageKeys } from "./userform.js";
-
+import { app, db, firebaseConfig } from "./initial_script.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-export const firebaseConfig = {
-  apiKey: "AIzaSyAx3yqOSfyTrKJYQ10Tq73UtIQmusj3z1k",
-  authDomain: "scounting16473.firebaseapp.com",
-  projectId: "scounting16473",
-  storageBucket: "scounting16473.appspot.com",
-  messagingSenderId: "899338740838",
-  appId: "1:899338740838:web:f32c8ab117e28fe039b9a7",
-};
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore();
 export const dataCollectionPath = ["formData"];
 
 // works, tested
