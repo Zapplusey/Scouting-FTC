@@ -12,16 +12,33 @@ import {
   getDocs,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-import { userStorageKeys } from "./userform.js";
-import { app, db, firebaseConfig } from "./initial_script.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-// Initialize Firebase
-export const dataCollectionPath = ["formData"];
+export const firebaseConfig = {
+  apiKey: "AIzaSyAx3yqOSfyTrKJYQ10Tq73UtIQmusj3z1k",
+  authDomain: "scounting16473.firebaseapp.com",
+  projectId: "scounting16473",
+  storageBucket: "scounting16473.appspot.com",
+  messagingSenderId: "899338740838",
+  appId: "1:899338740838:web:f32c8ab117e28fe039b9a7",
+};
 
+// Initialize Firebase
+export let app = null;
+export let db = null;
+export let dataCollectionPath = null;
+
+export function initialize() {
+  app = initializeApp(firebaseConfig);
+  db = getFirestore();
+  dataCollectionPath = ["formData"];
+}
+
+initialize();
 // works, tested
 export async function writeDoc__(collectionNames = [], o_ = {}) {
   const docRef = await setDoc(doc(db, arrayToPath(collectionNames)), o_)
@@ -234,14 +251,6 @@ function submitValues() {
 
 window.submitValues = submitValues;
 console.log("firebasing");
-const submitButton = document.querySelector("button#sub.SubButton");
-// if (submitButton) {
-//   console.log(`submit button: ${submitButton}`);
-//   window.addEventListener("click", eve => {
-//     if (eve.target.matches("button#sub.SubButton")) submitValues();
-//   });
-//   console.log("FOUND BUTTOn");
-// } else console.log("HAVEN'T FOUND BUTTON D:");
 
 const addListOfData = lst => {
   addDoc__(["formData"], lst);

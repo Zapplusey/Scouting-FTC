@@ -1,5 +1,6 @@
-import { getDocsData__, deleteDoc__, getDocsDatabase__ } from "./firebase_script.js";
+import { getDocsData__, deleteDoc__, getDocsDatabase__, initialize } from "./firebase_script.js";
 // Declaring variables
+initialize();
 const resultViewer = document.getElementById("result_viewer");
 const defaultDir = ["formData"];
 let mode = "forms";

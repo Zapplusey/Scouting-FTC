@@ -1,6 +1,8 @@
-import { getDoc__, getDocsDatabase__, writeDoc__ } from "./firebase_script.js";
+import { getDoc__, getDocsDatabase__, writeDoc__, initialize } from "./firebase_script.js";
 import { deleteUser } from "./userform.js";
 import { positionValues, valuesPosition } from "./userform.js";
+
+initialize();
 
 const resultViewer = document.querySelectorAll("#user-table").item(0);
 const headersHTML = `
@@ -12,6 +14,7 @@ const headersHTML = `
     <div class="h">DELETE button</div>
     
 </div>`;
+
 let usernameChange = "";
 let positionChange = "";
 const updateUserTable = async collectionPathArray => {
